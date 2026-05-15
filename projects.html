@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Agentiqly AI Agency</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f8fafc;color:#1e293b;font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden}
+:root{
+  --purple:#6d28d9;
+  --purple-light:#8b5cf6;
+  --purple-dark:#4c1d95;
+  --gold:#a78bfa;
+  --bg:#f8fafc;
+  --card-bg:#ffffff;
+  --text:#1e293b;
+  --text-muted:#64748b;
+  --border:#e2e8f0;
+}
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:var(--purple);border-radius:50%;opacity:0.12;animation:particle 8s linear infinite}
+@keyframes particle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.12}90%{opacity:0.12}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
+.particle:nth-child(1){left:10%;animation-duration:12s;animation-delay:0s}
+.particle:nth-child(2){left:30%;animation-duration:9s;animation-delay:2s}
+.particle:nth-child(3){left:50%;animation-duration:11s;animation-delay:4s}
+.particle:nth-child(4){left:70%;animation-duration:8s;animation-delay:1s}
+.particle:nth-child(5){left:90%;animation-duration:10s;animation-delay:3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(248,250,252,0.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.2rem}
+nav .logo span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav a{text-decoration:none;color:var(--text-muted);font-size:0.85rem;font-weight:500;transition:color 0.2s;position:relative}
+nav a:hover{color:var(--purple)}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--purple);transition:width 0.2s}
+nav a:hover::after{width:100%}
+nav a.active{color:var(--purple)}
+nav a.active::after{width:100%}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-cta{background:var(--purple);color:#fff!important;padding:0.45rem 1.25rem;border-radius:9999px!important;font-size:0.8rem!important;font-weight:600!important}
+.nav-cta::after{display:none!important}
+.page-header{padding:8rem 2rem 3rem;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.page-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:0.75rem}
+.page-header h1 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-header p{color:var(--text-muted);font-size:1rem;line-height:1.7;max-width:600px}
+.section-tag{display:inline-flex;align-items:center;gap:0.5rem;color:var(--purple);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:1rem}
+.project-detail{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;position:relative;z-index:1}
+.project-card-full{background:var(--card-bg);border:1px solid var(--border);border-radius:1.5rem;padding:3rem;margin-bottom:2rem;transition:all 0.3s}
+.project-card-full:hover{border-color:var(--purple);box-shadow:0 12px 40px rgba(109,40,217,0.06)}
+.project-card-full .meta{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.project-card-full .meta .pill{font-size:0.65rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:9999px;text-transform:uppercase;letter-spacing:0.5px}
+.project-card-full .meta .pill.cooking{background:rgba(109,40,217,0.1);color:var(--purple)}
+.project-card-full .meta .pill.research{background:rgba(234,179,8,0.1);color:#a16207}
+.project-card-full .meta .pill.pipeline{background:rgba(59,130,246,0.1);color:#2563eb}
+.project-card-full .meta .pill.poc{background:rgba(16,185,129,0.1);color:#059669}
+.project-card-full h2{font-size:1.5rem;font-weight:700;margin-bottom:0.75rem}
+.project-card-full h2 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.project-card-full p{color:var(--text-muted);font-size:0.9rem;line-height:1.7;margin-bottom:1.25rem}
+.project-card-full .tech-tags{display:flex;gap:0.5rem;flex-wrap:wrap}
+.project-card-full .tech-tags span{font-size:0.7rem;background:var(--bg);border:1px solid var(--border);padding:0.25rem 0.65rem;border-radius:9999px;color:var(--text-muted)}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:9999px;font-weight:600;font-size:0.85rem;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer}
+.btn-primary{background:var(--purple);color:#fff;box-shadow:0 4px 15px rgba(109,40,217,0.2)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(109,40,217,0.3)}
+.btn-outline{border:1px solid var(--border);color:var(--text);background:var(--card-bg)}
+.btn-outline:hover{border-color:var(--purple);color:var(--purple)}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.85rem}
+footer a{color:var(--purple);text-decoration:none}
+footer .brand{font-size:1.5rem;font-weight:800;margin-bottom:0.25rem;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0}
+footer .footer-links a{font-size:0.8rem;color:var(--text-muted)}
+footer .footer-links a:hover{color:var(--purple)}
+.copyright{margin-top:1rem;font-size:0.75rem;opacity:0.7}
+@media(max-width:768px){
+  nav{padding:0.75rem 1rem}
+  nav .nav-links a{font-size:0.75rem}
+  .nav-links{gap:0.75rem}
+  .project-card-full{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="particles">
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<nav>
+  <div class="logo"><span>Agentiqly</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/projects.html" class="active">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="section-tag">✦ Our Lab</p>
+  <h1>Projects <span>In Development</span></h1>
+  <p>The ClawTeam6 engineering lab is building across healthcare, finance, insurance, and research. Each project starts with a problem, follows the R.F.V.P. methodology, and ships as a production-ready AI system.</p>
+</div>
+
+<div class="project-detail">
+
+  <div class="project-card-full">
+    <div class="meta">
+      <span class="pill cooking">⚡ In Development</span>
+      <span class="pill poc">POC Complete</span>
+    </div>
+    <h2><span>ClawMed</span> — Medical Claims Intelligence</h2>
+    <p>HIPAA-compliant multi-agent system that automates medical claims processing, prior authorization workflows, and payer communication. Currently in beta with a regional healthcare network.</p>
+    <p><strong>Status:</strong> Integration testing with Epic EHR sandbox. Expected Q3 2026.</p>
+    <div class="tech-tags">
+      <span>HIPAA</span><span>Multi-Agent</span><span>EHR Integration</span><span>Claims NLP</span><span>GoatDB</span>
+    </div>
+  </div>
+
+  <div class="project-card-full">
+    <div class="meta">
+      <span class="pill research">🔬 Research Phase</span>
+    </div>
+    <h2><span>ClawFinance</span> — Autonomous Portfolio Monitoring</h2>
+    <p>Real-time financial intelligence agent that monitors portfolios, surfaces market movements, and generates natural language briefings. Built for RIAs and independent wealth managers.</p>
+    <p><strong>Status:</strong> Alpha model trained on 3 years of market data. Testing against live feeds.</p>
+    <div class="tech-tags">
+      <span>Real-Time Data</span><span>NLP</span><span>Portfolio Analysis</span><span>Alerting</span>
+    </div>
+  </div>
+
+  <div class="project-card-full">
+    <div class="meta">
+      <span class="pill pipeline">📋 In Pipeline</span>
+    </div>
+    <h2><span>ClawAudit</span> — AI Governance & Compliance</h2>
+    <p>Continuous audit system for AI operations. Monitors token budgets, guardrail compliance, decision logs, and generates audit-ready reports. Built for enterprises running multi-agent systems at scale.</p>
+    <p><strong>Status:</strong> Internal dogfood on ClawTeam6 operations. Open preview coming late 2026.</p>
+    <div class="tech-tags">
+      <span>Audit Trail</span><span>Governance</span><span>Compliance</span><span>Logging</span>
+    </div>
+  </div>
+
+  <div class="project-card-full">
+    <div class="meta">
+      <span class="pill cooking">⚡ In Development</span>
+    </div>
+    <h2><span>ClawResearch</span> — Deep Research Engine</h2>
+    <p>Multi-source research agent that crawls, analyzes, and synthesizes across thousands of documents, academic papers, and web sources. Delivers cited, structured intelligence briefs.</p>
+    <p><strong>Status:</strong> Core crawler stable. Citation engine in QA.</p>
+    <div class="tech-tags">
+      <span>Web Crawling</span><span>Academic Search</span><span>Synthesis</span><span>Citation</span>
+    </div>
+  </div>
+
+  <div class="project-card-full">
+    <div class="meta">
+      <span class="pill research">🔬 Research Phase</span>
+    </div>
+    <h2><span>AdjusterOS</span> — Insurance Adjuster OS</h2>
+    <p>End-to-end operating system for independent insurance adjusters. Covers claims intake, document analysis, estimate generation, Xactimate integration, and regulatory compliance tracking.</p>
+    <p><strong>Status:</strong> Field research complete. Prototype in development.</p>
+    <div class="tech-tags">
+      <span>Xactimate</span><span>Claims</span><span>Document AI</span><span>Compliance</span>
+    </div>
+  </div>
+
+  <div class="project-card-full" style="background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none">
+    <h2 style="color:#fff">🚀 Your Project Here</h2>
+    <p style="color:rgba(255,255,255,0.85)">Have a problem that needs a custom agent system? Every ClawTeam6 engagement starts with a conversation. No sales pitch, no obligation — just a discussion about what's possible.</p>
+    <a href="mailto:moshe@agentiqly.io" class="btn btn-primary" style="background:#fff;color:var(--purple);box-shadow:none;margin-top:0.5rem">📧 Start the Conversation</a>
+  </div>
+</div>
+
+<footer>
+  <p class="brand">Agentiqly</p>
+  <p>AI Agents That Build • <a href="https://www.agentiqly.io">www.agentiqly.io</a></p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io">Contact</a>
+  </div>
+  <p class="copyright">© 2026 Agentiqly Holdings</p>
+</footer>
+</body>
+</html>

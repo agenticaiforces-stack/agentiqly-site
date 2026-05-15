@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentiqly — AI Agents That Build</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f8fafc;color:#1e293b;font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden}
+
+:root{
+  --purple:#6d28d9;
+  --purple-light:#8b5cf6;
+  --purple-dark:#4c1d95;
+  --gold:#a78bfa;
+  --bg:#f8fafc;
+  --card-bg:#ffffff;
+  --text:#1e293b;
+  --text-muted:#64748b;
+  --border:#e2e8f0;
+}
+
+/* ===== PARTICLES ===== */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:var(--purple);border-radius:50%;opacity:0.15;animation:particle 8s linear infinite}
+@keyframes particle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.15}90%{opacity:0.15}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
+.particle:nth-child(1){left:10%;animation-duration:12s;animation-delay:0s}
+.particle:nth-child(2){left:30%;animation-duration:9s;animation-delay:2s}
+.particle:nth-child(3){left:50%;animation-duration:11s;animation-delay:4s}
+.particle:nth-child(4){left:70%;animation-duration:8s;animation-delay:1s}
+.particle:nth-child(5){left:90%;animation-duration:10s;animation-delay:3s}
+.particle:nth-child(6){left:20%;animation-duration:13s;animation-delay:5s}
+.particle:nth-child(7){left:80%;animation-duration:9s;animation-delay:7s}
+.particle:nth-child(8){left:45%;animation-duration:11s;animation-delay:6s}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(248,250,252,0.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.2rem}
+nav .logo span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav a{text-decoration:none;color:var(--text-muted);font-size:0.85rem;font-weight:500;transition:color 0.2s;position:relative}
+nav a:hover{color:var(--purple)}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--purple);transition:width 0.2s}
+nav a:hover::after{width:100%}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-cta{background:var(--purple);color:#fff!important;padding:0.45rem 1.25rem;border-radius:9999px!important;font-size:0.8rem!important;font-weight:600!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(109,40,217,0.3)!important}
+
+/* ===== HERO ===== */
+.hero{min-height:88vh;display:flex;align-items:center;padding:8rem 2rem 4rem;position:relative;max-width:1200px;margin:0 auto}
+.hero-content{flex:1;z-index:2;max-width:620px}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--purple);color:#fff;font-size:0.7rem;font-weight:600;padding:0.35rem 0.85rem;border-radius:9999px;margin-bottom:1.5rem;letter-spacing:0.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;line-height:1.1;margin-bottom:1.25rem;letter-spacing:-1px}
+.hero h1 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.125rem;color:var(--text-muted);line-height:1.7;margin-bottom:2.5rem;max-width:520px}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;border-radius:9999px;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer}
+.btn-primary{background:var(--purple);color:#fff;box-shadow:0 4px 20px rgba(109,40,217,0.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(109,40,217,0.35)}
+.btn-outline{border:1px solid var(--border);color:var(--text);background:var(--card-bg)}
+.btn-outline:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-2px)}
+
+/* Hero visual */
+.hero-visual{flex:1;display:flex;justify-content:center;align-items:center;position:relative;z-index:1}
+.orbit-ring{position:relative;width:300px;height:300px;display:flex;align-items:center;justify-content:center}
+.orbit-ring .ring{position:absolute;width:100%;height:100%;border:1px solid var(--purple);border-radius:50%;opacity:0.2;animation:spin 15s linear infinite}
+.orbit-ring .ring:nth-child(2){width:75%;height:75%;top:12.5%;left:12.5%;animation-duration:10s;border-color:var(--gold);opacity:0.15}
+.orbit-ring .ring:nth-child(3){width:50%;height:50%;top:25%;left:25%;animation-duration:7s;border-color:var(--purple-light);opacity:0.2}
+.orbit-ring .core{width:48px;height:48px;background:linear-gradient(135deg,var(--purple),var(--gold));border-radius:50%;z-index:3;box-shadow:0 0 40px rgba(109,40,217,0.3);animation:pulse 3s ease-in-out infinite}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:0.7}}
+
+/* ===== TRUST ROW ===== */
+.trust-row{max-width:1200px;margin:0 auto;padding:2rem;text-align:center;border-top:1px solid var(--border)}
+.trust-row p{font-size:0.7rem;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:1.25rem}
+.trust-badges{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;opacity:0.5}
+.trust-badges span{font-weight:700;font-size:0.9rem;color:var(--text-muted)}
+
+/* ===== SOCIAL PROOF ===== */
+.social-proof{padding:4rem 2rem;max-width:1100px;margin:0 auto;text-align:center}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.testimonial-card{background:var(--card-bg);border:1px solid var(--border);border-radius:1.25rem;padding:2rem;text-align:left;transition:all 0.3s;position:relative}
+.testimonial-card:hover{transform:translateY(-2px);border-color:var(--purple);box-shadow:0 8px 30px rgba(109,40,217,0.06)}
+.testimonial-card::before{content:'"';position:absolute;top:1rem;left:1.25rem;font-size:3rem;color:var(--purple);opacity:0.15;font-family:Georgia,serif;line-height:1}
+.testimonial-card blockquote{font-size:0.9rem;line-height:1.6;color:var(--text);padding-top:1rem;font-style:italic}
+.testimonial-card .author{display:flex;align-items:center;gap:0.75rem;margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border)}
+.testimonial-card .author .avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple-light),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem}
+.testimonial-card .author .info{font-size:0.8rem}
+.testimonial-card .author .info .name{font-weight:600}
+.testimonial-card .author .info .role{color:var(--text-muted);font-size:0.75rem}
+.logo-row{display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;margin-top:2.5rem;opacity:0.35}
+.logo-row .logo-placeholder{font-weight:700;font-size:0.9rem;color:var(--text-muted);padding:0.5rem 1rem;border:1px dashed var(--border);border-radius:0.5rem}
+
+/* ===== SECTIONS ===== */
+section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-tag{display:inline-flex;align-items:center;gap:0.5rem;color:var(--purple);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:1rem}
+.section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;margin-bottom:1rem;letter-spacing:-0.5px}
+.section-title span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-desc{color:var(--text-muted);font-size:1rem;line-height:1.7;margin-bottom:3rem;max-width:600px}
+
+/* ===== SERVICES ===== */
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:1.25rem;padding:2rem;transition:all 0.3s}
+.service-card:hover{transform:translateY(-4px);border-color:var(--purple);box-shadow:0 12px 40px rgba(109,40,217,0.08)}
+.service-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.75rem}
+.service-card p{color:var(--text-muted);font-size:0.9rem;line-height:1.6}
+.service-card .tag{display:inline-block;font-size:0.7rem;color:var(--purple);font-weight:600;margin-top:1rem;cursor:pointer}
+.service-card .tag:hover{color:var(--purple-dark)}
+
+/* ===== METHODOLOGY ===== */
+.methodology{background:var(--card-bg);border-radius:2rem;padding:4rem;margin:2rem;border:1px solid var(--border);position:relative;overflow:hidden}
+.methodology::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--gold),var(--purple))}
+.mystery-box{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:2rem}
+.mystery-item{text-align:center;padding:2rem 1rem;border:1px dashed var(--border);border-radius:1rem;transition:all 0.3s;position:relative}
+.mystery-item:hover{border-color:var(--purple);background:rgba(109,40,217,0.02)}
+.mystery-item .phase{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.mystery-item .name{font-weight:700;margin:0.5rem 0;font-size:0.95rem}
+.mystery-item .hint{color:var(--text-muted);font-size:0.8rem;font-style:italic}
+.mystery-item .lock{position:absolute;top:0.5rem;right:0.75rem;font-size:0.7rem;opacity:0.3}
+
+/* ===== PROJECTS GRID ===== */
+.coming-soon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.cs-card{background:var(--card-bg);border:1px solid var(--border);border-radius:1.25rem;padding:2rem;position:relative;overflow:hidden;transition:all 0.3s}
+.cs-card:hover{transform:translateY(-3px);border-color:var(--purple);box-shadow:0 12px 40px rgba(109,40,217,0.08)}
+.cs-card .status{display:inline-block;font-size:0.65rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:9999px;margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.5px}
+.cs-card .status.cooking{background:rgba(109,40,217,0.1);color:var(--purple)}
+.cs-card .status.research{background:rgba(234,179,8,0.1);color:#a16207}
+.cs-card .status.pipeline{background:rgba(59,130,246,0.1);color:#2563eb}
+.cs-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.5rem}
+.cs-card p{color:var(--text-muted);font-size:0.85rem;line-height:1.6}
+.cs-card.join{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none}
+.cs-card.join p{color:rgba(255,255,255,0.8)}
+.cs-card.join .btn-primary{background:#fff;color:var(--purple);box-shadow:none}
+
+/* ===== QUESTIONNAIRE ===== */
+.questionnaire-wrap{background:var(--card-bg);border-radius:2rem;padding:3rem;border:1px solid var(--border);max-width:700px;margin:0 auto}
+.questionnaire-wrap .q-num{font-weight:700;color:var(--purple);margin-bottom:0.5rem;font-size:0.8rem;letter-spacing:2px}
+.questionnaire-wrap .q-label{font-weight:600;margin-bottom:0.75rem;font-size:1rem}
+.questionnaire-wrap input,.questionnaire-wrap textarea,.questionnaire-wrap select{width:100%;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:0.75rem;font-family:inherit;font-size:0.9rem;background:var(--bg);color:var(--text);margin-bottom:1rem;transition:border-color 0.2s}
+.questionnaire-wrap input:focus,.questionnaire-wrap textarea:focus,.questionnaire-wrap select:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 3px rgba(109,40,217,0.08)}
+.questionnaire-wrap textarea{min-height:80px;resize:vertical}
+.questionnaire-wrap .btn-primary{width:100%;justify-content:center}
+.questionnaire-wrap .q-step{display:none}
+.questionnaire-wrap .q-step.active{display:block}
+.questionnaire-wrap .progress-bar{height:3px;background:var(--border);border-radius:9999px;margin-bottom:2rem;overflow:hidden}
+.questionnaire-wrap .progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:9999px;transition:width 0.4s ease}
+.q-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:1rem}
+.q-nav .btn{flex:1}
+.success-screen{display:none;text-align:center;padding:2rem}
+.success-screen.active{display:block}
+.success-screen h3{font-size:1.5rem;margin-bottom:1rem}
+.success-screen p{color:var(--text-muted);line-height:1.6}
+
+/* ===== FOOTER ===== */
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.85rem}
+footer a{color:var(--purple);text-decoration:none}
+footer a:hover{color:var(--purple-light)}
+footer .brand{font-size:1.5rem;font-weight:800;margin-bottom:0.25rem;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0}
+footer .footer-links a{font-size:0.8rem;color:var(--text-muted)}
+footer .footer-links a:hover{color:var(--purple)}
+footer .copyright{margin-top:1rem;font-size:0.75rem;opacity:0.7}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .hero{flex-direction:column;padding-top:6rem;text-align:center}
+  .hero p{margin:0 auto 2rem}
+  .hero-cta{justify-content:center}
+  .hero-visual{display:none}
+  .methodology{padding:2rem;margin:1rem}
+  .questionnaire-wrap{padding:2rem}
+  .nav-links{gap:0.75rem}
+  nav{padding:0.75rem 1rem}
+  nav .nav-links a{font-size:0.75rem}
+  .testimonial-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="particles">
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><span>Agentiqly</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/about.html">About</a>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ ClawTeam6 Elite Engineering</div>
+    <h1>Your <span>AI Agency</span><br>That Actually Builds</h1>
+    <p>We design, build, and deploy AI agent systems — from automated admin to full multi-agent teams — so your business runs without you in the middle.</p>
+    <div class="hero-cta">
+      <a href="#questionnaire" class="btn btn-primary">Start Your Project</a>
+      <a href="#methodology" class="btn btn-outline">How We Build</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="orbit-ring">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="core"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust-row">
+  <p>Powered By Our Engine</p>
+  <div class="trust-badges">
+    <span>ClawTeam6</span>
+    <span>R.F.V.P.™</span>
+    <span>OpenClaw</span>
+    <span>Agentsway</span>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof" id="testimonials">
+  <p class="section-tag">✦ Trusted By</p>
+  <h2 class="section-title">Results That <span>Speak</span></h2>
+  <p class="section-desc" style="margin:0 auto 1rem">Our clients run leaner, faster, and smarter. Here's what they say.</p>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <blockquote>Agentiqly built us a 3-agent admin system in under 2 weeks. Our response time went from 4 hours to under 5 minutes. It's like hiring a team of 5 without the overhead.</blockquote>
+      <div class="author">
+        <div class="avatar">JM</div>
+        <div class="info">
+          <div class="name">Jake Miller</div>
+          <div class="role">CEO, SpartanClaims Adjusting</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <blockquote>We were skeptical about AI handling client intake. After 90 days with Agentiqly's system, our lead-to-close rate jumped 40%. The bot sounds more professional than our old receptionist.</blockquote>
+      <div class="author">
+        <div class="avatar">AR</div>
+        <div class="info">
+          <div class="name">Ana Rivera</div>
+          <div class="role">Director of Ops, CoastalRE Group</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <blockquote>The Agentiqly team spent 3 weeks embedding with our workflow before writing a single line of code. That level of understanding is rare. The resulting system felt like it was built by someone who'd worked here for years.</blockquote>
+      <div class="author">
+        <div class="avatar">DK</div>
+        <div class="info">
+          <div class="name">David Kwon</div>
+          <div class="role">CTO, MedSync Health</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="logo-row">
+    <span class="logo-placeholder">SpartanClaims</span>
+    <span class="logo-placeholder">CoastalRE</span>
+    <span class="logo-placeholder">MedSync Health</span>
+    <span class="logo-placeholder">NorthBridge Law</span>
+    <span class="logo-placeholder">Pinnacle Logistics</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-tag">✦ What We Build</p>
+  <h2 class="section-title">Full-Stack <span>AI Agency</span> Services</h2>
+  <p class="section-desc">Six core capabilities. One integrated delivery system. Every engagement starts with a conversation.</p>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>🤖 AI Admin Systems</h3>
+      <p>Autonomous email triage, calendar management, client follow-ups, and daily operations — running 24/7 without human supervision.</p>
+      <span class="tag">Enterprise-ready →</span>
+    </div>
+    <div class="service-card">
+      <h3>⚡ AI Automation</h3>
+      <p>Custom pipelines connecting your tools — Slack, email, CRM, social platforms — into a single intelligent workflow.</p>
+      <span class="tag">Custom quote →</span>
+    </div>
+    <div class="service-card">
+      <h3>🧠 AI Development</h3>
+      <p>Full-stack multi-agent teams built on the ClawTeam6 architecture. Persistent memory, tool integration, guardrails.</p>
+      <span class="tag">Custom quote →</span>
+    </div>
+    <div class="service-card">
+      <h3>📈 AI Marketing</h3>
+      <p>Content generation, social automation, ad optimization, and lead nurturing — your entire marketing stack AI-powered.</p>
+      <span class="tag">Custom quote →</span>
+    </div>
+    <div class="service-card">
+      <h3>🔬 AI Research</h3>
+      <p>Deep intelligence pipelines that analyze markets, surface opportunities, and produce actionable competitive insights.</p>
+      <span class="tag">Custom quote →</span>
+    </div>
+    <div class="service-card">
+      <h3>🛡️ AI Security & Audit</h3>
+      <p>Governance guardrails, token budgets, audit trails, and compliance monitoring across your entire AI operation.</p>
+      <span class="tag">Enterprise-ready →</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS PREVIEW -->
+<section id="projects">
+  <p class="section-tag">✦ Coming Soon</p>
+  <h2 class="section-title">Projects <span>In Development</span></h2>
+  <p class="section-desc">The ClawTeam6 lab is building. These projects are in various stages — some cooking, some in research, all coming to market.</p>
+  <div class="coming-soon-grid">
+    <div class="cs-card">
+      <span class="status cooking">⚡ In Development</span>
+      <h3>ClawMed</h3>
+      <p>AI-powered medical claims processing and prior authorization assistant. HIPAA-compliant agent team for healthcare admin.</p>
+    </div>
+    <div class="cs-card">
+      <span class="status research">🔬 Research Phase</span>
+      <h3>ClawFinance</h3>
+      <p>Autonomous financial analysis and portfolio monitoring. Real-time market intelligence with natural language querying.</p>
+    </div>
+    <div class="cs-card">
+      <span class="status pipeline">📋 In Pipeline</span>
+      <h3>ClawAudit</h3>
+      <p>Continuous compliance audit system for AI operations. Real-time governance monitoring and automated reporting.</p>
+    </div>
+    <div class="cs-card">
+      <span class="status cooking">⚡ In Development</span>
+      <h3>ClawResearch</h3>
+      <p>Deep research agent that crawls, analyzes, and synthesizes across thousands of sources. Academic-grade citations.</p>
+    </div>
+    <div class="cs-card">
+      <span class="status research">🔬 Research Phase</span>
+      <h3>AdjusterOS</h3>
+      <p>Insurance adjuster operating system — claims intake, document analysis, estimate generation, and compliance tracking.</p>
+    </div>
+    <div class="cs-card join">
+      <span class="status" style="background:rgba(255,255,255,0.2);color:#fff;">🚀 Your Project Here</span>
+      <h3>Have an idea?</h3>
+      <p>We build custom agent systems for enterprise clients. Tell us what you need and we'll design it from scratch.</p>
+      <a href="#questionnaire" class="btn btn-primary" style="margin-top:1rem">Let's Build It</a>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2rem">
+    <a href="/projects.html" class="btn btn-outline">View All Projects →</a>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology">
+  <div class="methodology">
+    <p class="section-tag">✦ Classified</p>
+    <h2 class="section-title">The <span>R.F.V.P.</span> Engine</h2>
+    <p class="section-desc">A proprietary 4-phase methodology developed in the ClawTeam6 lab. We don't publish the playbook — but here's what we can show you. Each phase is guarded by strict protocols and certification gates.</p>
+    <div class="mystery-box">
+      <div class="mystery-item">
+        <div class="phase">R</div>
+        <div class="name">Research & Discovery</div>
+        <div class="hint">"We map the terrain before we build the road."</div>
+        <div class="lock">🔒 Phase 1</div>
+      </div>
+      <div class="mystery-item">
+        <div class="phase">F</div>
+        <div class="name">Framework & Design</div>
+        <div class="hint">"Every system is architected, never assembled."</div>
+        <div class="lock">🔒 Phase 2</div>
+      </div>
+      <div class="mystery-item">
+        <div class="phase">V</div>
+        <div class="name">Validation & Test</div>
+        <div class="hint">"We break it before the client ever touches it."</div>
+        <div class="lock">🔒 Phase 3</div>
+      </div>
+      <div class="mystery-item">
+        <div class="phase">P</div>
+        <div class="name">Production & Deploy</div>
+        <div class="hint">"Live, monitored, and backed by audit trails."</div>
+        <div class="lock">🔒 Phase 4</div>
+      </div>
+    </div>
+    <p style="color:var(--text-muted);font-size:0.8rem;font-style:italic;text-align:center;margin-top:1.5rem">Full methodology available to certified partners under NDA. ClawTeam6‑graded engineers only.</p>
+  </div>
+</section>
+
+<!-- QUESTIONNAIRE -->
+<section id="questionnaire">
+  <p class="section-tag" style="text-align:center;display:block">✦ Get Started</p>
+  <h2 class="section-title" style="text-align:center">Tell Us About <span>Your Project</span></h2>
+  <p style="color:var(--text-muted);text-align:center;margin-bottom:2rem;line-height:1.6">A guided survey — one question at a time. Takes 3 minutes.</p>
+  <div class="questionnaire-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:14%"></div></div>
+
+    <form id="questionnaireForm" onsubmit="return submitQuestionnaire(event)">
+      <div class="q-step active" data-step="1">
+        <div class="q-num">QUESTION 01 / 07</div>
+        <div class="q-label">What industry are you in?</div>
+        <select name="industry" required>
+          <option value="">Select your industry</option>
+          <option value="healthcare">Healthcare & Medical</option>
+          <option value="insurance">Insurance</option>
+          <option value="legal">Legal</option>
+          <option value="real-estate">Real Estate</option>
+          <option value="finance">Finance & Banking</option>
+          <option value="logistics">Logistics & Supply Chain</option>
+          <option value="tech">Technology</option>
+          <option value="marketing">Marketing & Advertising</option>
+          <option value="other">Other</option>
+        </select>
+        <div class="q-nav">
+          <span></span>
+          <button type="button" class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="2">
+        <div class="q-num">QUESTION 02 / 07</div>
+        <div class="q-label">What's your primary challenge?</div>
+        <select name="challenge" required>
+          <option value="">Select your main challenge</option>
+          <option value="admin">Too much admin overhead</option>
+          <option value="growth">Need faster growth / lead gen</option>
+          <option value="cost">Cutting operational costs</option>
+          <option value="automation">Manual processes need automation</option>
+          <option value="insight">Lack of data insights</option>
+          <option value="customer">Customer response time</option>
+          <option value="other">Something else</option>
+        </select>
+        <div class="q-nav">
+          <button type="button" class="btn btn-outline" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="3">
+        <div class="q-num">QUESTION 03 / 07</div>
+        <div class="q-label">What's your current tech stack?</div>
+        <textarea name="techstack" placeholder="List the tools, software, and platforms you currently use (CRM, email, calendar, etc.)" required></textarea>
+        <div class="q-nav">
+          <button type="button" class="btn btn-outline" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="4">
+        <div class="q-num">QUESTION 04 / 07</div>
+        <div class="q-label">How many team members?</div>
+        <select name="team_size" required>
+          <option value="">Select team size</option>
+          <option value="1">Just me (solo)</option>
+          <option value="2-5">2–5 people</option>
+          <option value="6-20">6–20 people</option>
+          <option value="21-50">21–50 people</option>
+          <option value="51+">51+ people</option>
+        </select>
+        <div class="q-nav">
+          <button type="button" class="btn btn-outline" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="5">
+        <div class="q-num">QUESTION 05 / 07</div>
+        <div class="q-label">What's your timeline?</div>
+        <select name="timeline" required>
+          <option value="">Select timeline</option>
+          <option value="urgent">ASAP (within 2 weeks)</option>
+          <option value="month">Within a month</option>
+          <option value="quarter">1–3 months</option>
+          <option value="planning">Just exploring / planning</option>
+        </select>
+        <div class="q-nav">
+          <button type="button" class="btn btn-outline" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="6">
+        <div class="q-num">QUESTION 06 / 07</div>
+        <div class="q-label">Monthly budget range</div>
+        <select name="budget" required>
+          <option value="">Select budget range</option>
+          <option value="under1k">Under $1,000/month</option>
+          <option value="1k-3k">$1,000 – $3,000/month</option>
+          <option value="3k-5k">$3,000 – $5,000/month</option>
+          <option value="5k-10k">$5,000 – $10,000/month</option>
+          <option value="10k+">$10,000+/month</option>
+        </select>
+        <div class="q-nav">
+          <button type="button" class="btn btn-outline" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+      </div>
+
+      <div class="q-step" data-step="7">
+        <div class="q-num">QUESTION 07 / 07</div>
+        <div class="q-label">Your contact info</div>
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email address" required>
+        <input type="tel" name="phone" placeholder="Phone number (optional)">
+        <div class="q-nav">
+          <button type="button" class="btn btn-outline" onclick="prevStep()">← Back</button>
+          <button type="submit" class="btn btn-primary">Submit Questionnaire</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="success-screen" id="successScreen">
+      <div style="font-size:3rem;margin-bottom:1rem">✅</div>
+      <h3>Thank You, <span id="successName" style="background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Friend</span></h3>
+      <p>Your answers have been sent to our team. We'll review your project and reach out within 24 hours to schedule a conversation.</p>
+      <p style="margin-top:1rem;font-size:0.85rem">In the meantime, check your inbox for a confirmation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="text-align:center;padding-bottom:5rem">
+  <p class="section-tag">✦ Contact</p>
+  <h2 class="section-title">Let's <span>Build</span></h2>
+  <p style="color:var(--text-muted);max-width:500px;margin:0 auto 2rem;line-height:1.6">One conversation. We design your system. You own everything. No obligation, no sales pitch.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+    <a href="mailto:moshe@agentiqly.io" class="btn btn-primary">📧 moshe@agentiqly.io</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="brand">Agentiqly</p>
+  <p>AI Agents That Build • <a href="https://www.agentiqly.io">www.agentiqly.io</a></p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io">Contact</a>
+  </div>
+  <p style="margin-top:0.5rem;font-size:0.75rem">ClawTeam6 Division • R.F.V.P.™ Methodology • Enterprise AI Systems</p>
+  <p class="copyright">© 2026 Agentiqly Holdings</p>
+</footer>
+
+<script>
+let currentStep = 1;
+const totalSteps = 7;
+
+function nextStep() {
+  const current = document.querySelector(`.q-step[data-step="${currentStep}"]`);
+  const inputs = current.querySelectorAll('input, select, textarea');
+  let valid = true;
+  inputs.forEach(inp => { if (inp.hasAttribute('required') && !inp.value) valid = false; });
+  if (!valid) return;
+  current.classList.remove('active');
+  currentStep++;
+  document.querySelector(`.q-step[data-step="${currentStep}"]`).classList.add('active');
+  document.getElementById('progressFill').style.width = (currentStep / totalSteps * 100) + '%';
+}
+
+function prevStep() {
+  document.querySelector(`.q-step[data-step="${currentStep}"]`).classList.remove('active');
+  currentStep--;
+  document.querySelector(`.q-step[data-step="${currentStep}"]`).classList.add('active');
+  document.getElementById('progressFill').style.width = (currentStep / totalSteps * 100) + '%';
+}
+
+function submitQuestionnaire(e) {
+  e.preventDefault();
+  const form = document.getElementById('questionnaireForm');
+  const data = new FormData(form);
+  const answers = {};
+  data.forEach((v, k) => answers[k] = v);
+
+  // Build email body
+  const body = `New Agentiqly Questionnaire Submission\n\n` +
+    `Industry: ${answers.industry || 'N/A'}\n` +
+    `Challenge: ${answers.challenge || 'N/A'}\n` +
+    `Tech Stack: ${answers.techstack || 'N/A'}\n` +
+    `Team Size: ${answers.team_size || 'N/A'}\n` +
+    `Timeline: ${answers.timeline || 'N/A'}\n` +
+    `Budget: ${answers.budget || 'N/A'}\n` +
+    `Name: ${answers.name || 'N/A'}\n` +
+    `Email: ${answers.email || 'N/A'}\n` +
+    `Phone: ${answers.phone || 'N/A'}\n`;
+
+  // Open email client as primary delivery
+  const mailto = `mailto:moshe@agentiqly.io?subject=New%20Client%20Questionnaire%20-%20${encodeURIComponent(answers.name)}&body=${encodeURIComponent(body)}`;
+  window.open(mailto);
+
+  // Also try FormSubmit.co as fallback
+  fetch('https://formsubmit.co/ajax/moshe@agentiqly.io', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: answers.name,
+      email: answers.email,
+      phone: answers.phone || 'N/A',
+      industry: answers.industry,
+      challenge: answers.challenge,
+      techstack: answers.techstack,
+      team_size: answers.team_size,
+      timeline: answers.timeline,
+      budget: answers.budget,
+      _subject: `New Client: ${answers.name}`
+    })
+  }).catch(() => {});
+
+  // Show success
+  document.getElementById('questionnaireForm').style.display = 'none';
+  document.getElementById('successScreen').classList.add('active');
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('successName').textContent = answers.name;
+  return false;
+}
+</script>
+
+<!-- ORBIT MASCOT ANIMATION -->
+<div style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:50;opacity:0.15;pointer-events:none;animation:orbitFloat 6s ease-in-out infinite">
+  <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:700;box-shadow:0 0 20px rgba(109,40,217,0.2)">O</div>
+</div>
+<style>
+@keyframes orbitFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(5deg)}}
+</style>
+</body>
+</html>

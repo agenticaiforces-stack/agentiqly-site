@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Agentiqly AI Agency</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f8fafc;color:#1e293b;font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden}
+:root{
+  --purple:#6d28d9;
+  --purple-light:#8b5cf6;
+  --purple-dark:#4c1d95;
+  --gold:#a78bfa;
+  --bg:#f8fafc;
+  --card-bg:#ffffff;
+  --text:#1e293b;
+  --text-muted:#64748b;
+  --border:#e2e8f0;
+}
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:var(--purple);border-radius:50%;opacity:0.12;animation:particle 8s linear infinite}
+@keyframes particle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.12}90%{opacity:0.12}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
+.particle:nth-child(1){left:10%;animation-duration:12s;animation-delay:0s}
+.particle:nth-child(2){left:30%;animation-duration:9s;animation-delay:2s}
+.particle:nth-child(3){left:50%;animation-duration:11s;animation-delay:4s}
+.particle:nth-child(4){left:70%;animation-duration:8s;animation-delay:1s}
+.particle:nth-child(5){left:90%;animation-duration:10s;animation-delay:3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(248,250,252,0.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.2rem}
+nav .logo span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav a{text-decoration:none;color:var(--text-muted);font-size:0.85rem;font-weight:500;transition:color 0.2s;position:relative}
+nav a:hover{color:var(--purple)}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--purple);transition:width 0.2s}
+nav a:hover::after{width:100%}
+nav a.active{color:var(--purple)}
+nav a.active::after{width:100%}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-cta{background:var(--purple);color:#fff!important;padding:0.45rem 1.25rem;border-radius:9999px!important;font-size:0.8rem!important;font-weight:600!important}
+.nav-cta::after{display:none!important}
+.page-header{padding:8rem 2rem 3rem;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.page-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:0.75rem}
+.page-header h1 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-header p{color:var(--text-muted);font-size:1rem;line-height:1.7;max-width:600px}
+.section-tag{display:inline-flex;align-items:center;gap:0.5rem;color:var(--purple);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:1rem}
+.about-content{max-width:800px;margin:0 auto;padding:0 2rem 5rem;position:relative;z-index:1}
+.about-content h2{font-size:1.5rem;font-weight:700;margin-top:3rem;margin-bottom:1rem}
+.about-content h2:first-of-type{margin-top:0}
+.about-content h2 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-content p{color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-bottom:1.25rem}
+.about-content .highlight-box{background:var(--card-bg);border:1px solid var(--border);border-radius:1.25rem;padding:2rem;margin:2rem 0}
+.about-content .highlight-box h3{font-size:1.1rem;font-weight:700;margin-bottom:0.75rem}
+.about-content .highlight-box p{font-size:0.9rem;margin-bottom:0.5rem}
+.about-content .highlight-box p:last-child{margin-bottom:0}
+.manifesto{background:var(--card-bg);border:1px solid var(--border);border-radius:2rem;padding:3rem;margin:3rem 0;position:relative;overflow:hidden}
+.manifesto::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--gold),var(--purple))}
+.manifesto h3{font-size:1.3rem;font-weight:700;margin-bottom:1.5rem}
+.manifesto h3 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.manifesto p{font-size:0.95rem;line-height:1.8;color:var(--text);margin-bottom:1rem}
+.manifesto p:last-child{margin-bottom:0}
+.clawteam6-overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}
+.ct6-card{background:var(--bg);border:1px solid var(--border);border-radius:1rem;padding:1.5rem;text-align:center;transition:all 0.3s}
+.ct6-card:hover{border-color:var(--purple);transform:translateY(-2px)}
+.ct6-card .emblem{font-size:1.5rem;margin-bottom:0.5rem}
+.ct6-card h4{font-size:0.95rem;font-weight:700;margin-bottom:0.35rem}
+.ct6-card p{font-size:0.8rem;color:var(--text-muted)}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:9999px;font-weight:600;font-size:0.85rem;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer}
+.btn-primary{background:var(--purple);color:#fff;box-shadow:0 4px 15px rgba(109,40,217,0.2)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(109,40,217,0.3)}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.85rem}
+footer a{color:var(--purple);text-decoration:none}
+footer .brand{font-size:1.5rem;font-weight:800;margin-bottom:0.25rem;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0}
+footer .footer-links a{font-size:0.8rem;color:var(--text-muted)}
+footer .footer-links a:hover{color:var(--purple)}
+.copyright{margin-top:1rem;font-size:0.75rem;opacity:0.7}
+@media(max-width:768px){
+  nav{padding:0.75rem 1rem}
+  nav .nav-links a{font-size:0.75rem}
+  .nav-links{gap:0.75rem}
+  .manifesto{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="particles">
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<nav>
+  <div class="logo"><span>Agentiqly</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/about.html" class="active">About</a>
+    <a href="mailto:moshe@agentiqly.io" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="section-tag">✦ Who We Are</p>
+  <h1>AI Agents That <span>Build</span></h1>
+  <p>We're not a consulting shop that talks about AI. We're an engineering lab that builds production agent systems — deployed, monitored, and delivering measurable outcomes.</p>
+</div>
+
+<div class="about-content">
+
+  <h2>The <span>Agentiqly</span> Philosophy</h2>
+  <p>Most AI agencies sell you a report and a handshake. We sell you a system that runs your business while you sleep.</p>
+  <p>Agentiqly is the holding company for the ClawTeam6 engineering unit — a multi-agent architecture lab that designs, builds, and deploys AI agent teams for businesses that need to scale without hiring ten more people.</p>
+  <p>Every engagement starts with the R.F.V.P.™ methodology — a proprietary 4-phase process developed in the ClawTeam6 lab. Research first, then framework, then validation, then deployment. No shortcuts, no vaporware.</p>
+
+  <div class="manifesto">
+    <h3>🚀 Our <span>Manifesto</span></h3>
+    <p><strong>AI is not a feature. It's a workforce.</strong></p>
+    <p>We believe the companies that will dominate the next decade aren't the ones with the most employees — they're the ones with the best agents. Not chatbots. Not wrappers around GPT. Autonomous systems with persistent memory, tool access, guardrails, and audit trails.</p>
+    <p>We build those systems. And we build them to last.</p>
+    <p><strong>Every agent we deploy:</strong></p>
+    <p>✓ Has a defined role, persona, and decision hierarchy<br>
+    ✓ Writes to persistent memory at end of every session<br>
+    ✓ Operates within hard guardrails and deterministic rules<br>
+    ✓ Leaves an audit trail for every decision<br>
+    ✓ Can hand off context to any other agent in the team</p>
+    <p style="margin-top:1rem">That's what "AI Agents That Build" means. We don't just build agents. We build <em>teams</em>.</p>
+  </div>
+
+  <h2>The <span>ClawTeam6</span> Engineering Unit</h2>
+  <p>ClawTeam6 is the elite engineering division within Agentiqly. It operates as a distributed multi-agent system — 9 specialized agents, each with a defined persona, voice, and set of hard guardrails.</p>
+  <p>Every agent in ClawTeam6 is governed by deterministic rules: hard guardrails that cannot be overridden, soft rules that guide decision-making, and a design bible that ensures consistency across every output.</p>
+
+  <div class="clawteam6-overview">
+    <div class="ct6-card">
+      <div class="emblem">🎯</div>
+      <h4>Maestro RFVP</h4>
+      <p>Project orchestrator. Pipeline manager. The only agent that coordinates specialists.</p>
+    </div>
+    <div class="ct6-card">
+      <div class="emblem">🎨</div>
+      <h4>Design Director</h4>
+      <p>UX & brand guardian. 10 hard guardrails. Apple→Prada→Stripe design precedence.</p>
+    </div>
+    <div class="ct6-card">
+      <div class="emblem">⚡</div>
+      <h4>Aegis Probe</h4>
+      <p>Quality assurance & system testing. Nothing deploys without a green light.</p>
+    </div>
+    <div class="ct6-card">
+      <div class="emblem">🛡️</div>
+      <h4>Sentinel Curator</h4>
+      <p>Governance & token budget enforcement. 50K token/day hard cap. Audit trail guardian.</p>
+    </div>
+    <div class="ct6-card">
+      <div class="emblem">🧠</div>
+      <h4>Chronicler</h4>
+      <p>Persistent memory & session logging. Reads every wake-up, writes every goodbye.</p>
+    </div>
+    <div class="ct6-card">
+      <div class="emblem">🔧</div>
+      <h4>Nimbus Relay</h4>
+      <p>Deployment & infrastructure. Builds, ships, monitors. Cannot deploy without Aegis.</p>
+    </div>
+    <div class="ct6-card">
+      <div class="emblem">🔬</div>
+      <h4>Helix Forge</h4>
+      <p>Research & development. Explores new tools, tests integrations, documents findings.</p>
+    </div>
+    <div class="ct6-card">
+      <div class="emblem">📊</div>
+      <h4>Atlas</h4>
+      <p>Data analytics & insight generation. Numbers don't lie, and Atlas doesn't guess.</p>
+    </div>
+    <div class="ct6-card">
+      <div class="emblem">🔎</div>
+      <h4>Echo</h4>
+      <p>Client listening & sentiment. Reads tone, captures context, briefs the team.</p>
+    </div>
+  </div>
+
+  <h2>The <span>R.F.V.P.</span> Methodology</h2>
+  <p>Everything we build follows the same 4-phase engine:</p>
+  <div class="highlight-box">
+    <h3>🔬 Phase R — Research & Discovery</h3>
+    <p>We embed in your workflow before we write a single line of code. Interviews, process mapping, data audit. We need to understand your business better than your own team does.</p>
+    <h3 style="margin-top:1.5rem">📐 Phase F — Framework & Design</h3>
+    <p>Architecture documents, agent role definitions, guardrail specifications, tech stack decisions, and cost modeling. Everything is designed on paper before any agent is built.</p>
+    <h3 style="margin-top:1.5rem">🧪 Phase V — Validation & Test</h3>
+    <p>Staged rollouts. A/B testing against your current processes. Failure mode analysis. We break things in staging so they don't break in production.</p>
+    <h3 style="margin-top:1.5rem">🚀 Phase P — Production & Deploy</h3>
+    <p>Live deployment with monitoring, audit trails, and emergency controls. You get a dashboard, not a black box. And we stay on retainer.</p>
+  </div>
+
+  <h2>Why <span>Agentiqly</span>?</h2>
+  <p><strong>We've done this before.</strong> The ClawTeam6 architecture has been tested across insurance, healthcare, real estate, and professional services. We know what breaks, what scales, and what clients actually need vs. what they ask for.</p>
+  <p><strong>You own everything.</strong> Every agent, every prompt, every line of infrastructure belongs to you. No black boxes, no vendor lock-in, no "our platform" licensing fees.</p>
+  <p><strong>We don't do fixed scopes.</strong> Every engagement is a partnership. We start with a conversation, build incrementally, and keep evolving as your needs change.</p>
+
+  <div style="text-align:center;margin-top:3rem;padding:2rem;background:var(--card-bg);border:1px solid var(--border);border-radius:1.5rem">
+    <p style="font-size:1.1rem;font-weight:600;margin-bottom:0.5rem">Ready to build?</p>
+    <p style="color:var(--text-muted);margin-bottom:1.25rem">One conversation. No obligation. You own everything.</p>
+    <a href="mailto:moshe@agentiqly.io" class="btn btn-primary">📧 moshe@agentiqly.io</a>
+  </div>
+</div>
+
+<footer>
+  <p class="brand">Agentiqly</p>
+  <p>AI Agents That Build • <a href="https://www.agentiqly.io">www.agentiqly.io</a></p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io">Contact</a>
+  </div>
+  <p class="copyright">© 2026 Agentiqly Holdings</p>
+</footer>
+</body>
+</html>

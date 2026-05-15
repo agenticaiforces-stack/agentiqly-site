@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — Agentiqly AI Agency</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f8fafc;color:#1e293b;font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden}
+:root{
+  --purple:#6d28d9;
+  --purple-light:#8b5cf6;
+  --purple-dark:#4c1d95;
+  --gold:#a78bfa;
+  --bg:#f8fafc;
+  --card-bg:#ffffff;
+  --text:#1e293b;
+  --text-muted:#64748b;
+  --border:#e2e8f0;
+}
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:var(--purple);border-radius:50%;opacity:0.12;animation:particle 8s linear infinite}
+@keyframes particle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.12}90%{opacity:0.12}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
+.particle:nth-child(1){left:10%;animation-duration:12s;animation-delay:0s}
+.particle:nth-child(2){left:30%;animation-duration:9s;animation-delay:2s}
+.particle:nth-child(3){left:50%;animation-duration:11s;animation-delay:4s}
+.particle:nth-child(4){left:70%;animation-duration:8s;animation-delay:1s}
+.particle:nth-child(5){left:90%;animation-duration:10s;animation-delay:3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(248,250,252,0.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.2rem}
+nav .logo span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav a{text-decoration:none;color:var(--text-muted);font-size:0.85rem;font-weight:500;transition:color 0.2s;position:relative}
+nav a:hover{color:var(--purple)}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--purple);transition:width 0.2s}
+nav a:hover::after{width:100%}
+nav a.active{color:var(--purple)}
+nav a.active::after{width:100%}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-cta{background:var(--purple);color:#fff!important;padding:0.45rem 1.25rem;border-radius:9999px!important;font-size:0.8rem!important;font-weight:600!important}
+.nav-cta::after{display:none!important}
+.page-header{padding:8rem 2rem 3rem;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.page-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:0.75rem}
+.page-header h1 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-header p{color:var(--text-muted);font-size:1rem;line-height:1.7;max-width:600px}
+.section-tag{display:inline-flex;align-items:center;gap:0.5rem;color:var(--purple);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:1rem}
+.case-studies{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;position:relative;z-index:1}
+.case-card{background:var(--card-bg);border:1px solid var(--border);border-radius:1.5rem;padding:2.5rem;margin-bottom:2.5rem;transition:all 0.3s;position:relative;overflow:hidden}
+.case-card:hover{border-color:var(--purple);box-shadow:0 12px 40px rgba(109,40,217,0.06)}
+.case-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--purple),var(--gold))}
+.case-card .industry-tag{display:inline-block;font-size:0.65rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:9999px;background:rgba(109,40,217,0.08);color:var(--purple);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:1rem}
+.case-card h2{font-size:1.3rem;font-weight:700;margin-bottom:0.5rem}
+.case-card .result-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;color:var(--purple);margin:0.75rem 0}
+.case-card .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;padding:1.5rem;background:var(--bg);border-radius:1rem}
+.case-card .metrics .stat{text-align:center}
+.case-card .metrics .stat .num{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.case-card .metrics .stat .label{font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem}
+.case-card blockquote{font-style:italic;font-size:0.9rem;line-height:1.7;color:var(--text);padding:1rem 1.5rem;border-left:2px solid var(--purple);margin:1.25rem 0}
+.case-card blockquote .attribution{font-style:normal;font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem}
+.case-card p{color:var(--text-muted);font-size:0.9rem;line-height:1.7}
+.case-card .tech-used{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1rem}
+.case-card .tech-used span{font-size:0.7rem;background:var(--bg);border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:9999px;color:var(--text-muted)}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.85rem}
+footer a{color:var(--purple);text-decoration:none}
+footer .brand{font-size:1.5rem;font-weight:800;margin-bottom:0.25rem;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0}
+footer .footer-links a{font-size:0.8rem;color:var(--text-muted)}
+footer .footer-links a:hover{color:var(--purple)}
+.copyright{margin-top:1rem;font-size:0.75rem;opacity:0.7}
+@media(max-width:768px){
+  .case-card .metrics{grid-template-columns:1fr}
+  nav{padding:0.75rem 1rem}
+  nav .nav-links a{font-size:0.75rem}
+  .nav-links{gap:0.75rem}
+}
+</style>
+</head>
+<body>
+<div class="particles">
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<nav>
+  <div class="logo"><span>Agentiqly</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html" class="active">Case Studies</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="section-tag">✦ Results</p>
+  <h1>Case <span>Studies</span></h1>
+  <p>Real engagements, real outcomes. Each case study documents the problem, our approach, and the measurable results delivered by the ClawTeam6 methodology.</p>
+</div>
+
+<div class="case-studies">
+
+  <div class="case-card">
+    <span class="industry-tag">Insurance Adjusting</span>
+    <h2>SpartanClaims — 3-Agent Admin Transformation</h2>
+    <p>A mid-size independent adjusting firm processing 200+ claims monthly needed to cut administrative overhead without hiring. Their adjusters were spending 40% of their day on email triage, document filing, and follow-up calls instead of adjusting.</p>
+    <div class="result-badge">▼ The Result</div>
+    <div class="metrics">
+      <div class="stat"><div class="num">4hr→5min</div><div class="label">Response Time</div></div>
+      <div class="stat"><div class="num">40%</div><div class="label">Admin Recovery</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Agents Deployed</div></div>
+    </div>
+    <blockquote>
+      "Agentiqly built us a 3-agent admin system in under 2 weeks. Our response time went from 4 hours to under 5 minutes. It's like hiring a team of 5 without the overhead."
+      <div class="attribution">— Jake Miller, CEO, SpartanClaims Adjusting</div>
+    </blockquote>
+    <p><strong>What we built:</strong> An email triage agent that categorizes, prioritizes, and drafts responses; a document management agent that auto-files claims paperwork into structured folders; and a follow-up agent that schedules and sends client check-ins. All three agents share a persistent memory store via GoatDB, so context carries across every interaction.</p>
+    <div class="tech-used">
+      <span>GoatDB</span><span>OpenClaw</span><span>Multi-Agent</span><span>Email Triage</span><span>NLP</span>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <span class="industry-tag">Real Estate</span>
+    <h2>CoastalRE Group — Lead-to-Close Pipeline Automation</h2>
+    <p>A 12-person commercial real estate firm was losing leads because no one was following up fast enough. Their CRM had 400+ stale leads, and inbound inquiries sat for 6+ hours before any human touched them.</p>
+    <div class="result-badge">▼ The Result</div>
+    <div class="metrics">
+      <div class="stat"><div class="num">40%</div><div class="label">Lead-to-Close Increase</div></div>
+      <div class="stat"><div class="num">6hr→2min</div><div class="label">First Response</div></div>
+      <div class="stat"><div class="num">0</div><div class="label">New Hires Needed</div></div>
+    </div>
+    <blockquote>
+      "We were skeptical about AI handling client intake. After 90 days, the bot sounds more professional than our old receptionist."
+      <div class="attribution">— Ana Rivera, Director of Ops, CoastalRE Group</div>
+    </blockquote>
+    <p><strong>What we built:</strong> An intake agent that handles inbound inquiries, qualifies leads against firm criteria, and schedules appointments; a CRM hygiene agent that rescues stale leads with personalized re-engagement sequences; and a reporting agent that surfaces pipeline bottlenecks weekly.</p>
+    <div class="tech-used">
+      <span>CRM API</span><span>Slack Integration</span><span>Email Automation</span><span>Lead Scoring</span>
+    </div>
+  </div>
+
+  <div class="case-card">
+    <span class="industry-tag">Healthcare</span>
+    <h2>MedSync Health — Clinical Operations Agent</h2>
+    <p>A 50+ provider healthcare network was drowning in prior authorization paperwork. Each request took 45 minutes of manual data entry and phone follow-ups, with a 30% first-pass denial rate due to incomplete submissions.</p>
+    <div class="result-badge">▼ The Result</div>
+    <div class="metrics">
+      <div class="stat"><div class="num">60%</div><div class="label">Auth Time Reduction</div></div>
+      <div class="stat"><div class="num">92%</div><div class="label">First-Pass Approval</div></div>
+      <div class="stat"><div class="num">18hrs/wk</div><div class="label">Staff Time Saved</div></div>
+    </div>
+    <blockquote>
+      "The Agentiqly team spent 3 weeks embedding with our workflow before writing a single line of code. The resulting system felt like it was built by someone who'd worked here for years."
+      <div class="attribution">— David Kwon, CTO, MedSync Health</div>
+    </blockquote>
+    <p><strong>What we built:</strong> A prior authorization agent that pulls patient data from the EHR, auto-fills payer-specific forms, submits electronically, and tracks status. When a denial comes back, the agent analyzes the reason, flags missing information, and re-submits with corrections. Integration with Epic EHR via FHIR APIs.</p>
+    <div class="tech-used">
+      <span>FHIR</span><span>Epic Integration</span><span>HIPAA</span><span>Prior Auth</span><span>Document AI</span>
+    </div>
+  </div>
+
+  <div class="case-card" style="background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none">
+    <span class="industry-tag" style="background:rgba(255,255,255,0.15);color:#fff;">Your Industry</span>
+    <h2 style="color:#fff">Be the Next Case Study</h2>
+    <p style="color:rgba(255,255,255,0.85)">Every engagement starts with a conversation. No sales pitch, no obligation — just a discussion about what AI agents could do for your business.</p>
+    <a href="mailto:moshe@agentiqly.io" class="btn" style="display:inline-flex;background:#fff;color:var(--purple);padding:0.75rem 1.5rem;border-radius:9999px;font-weight:600;text-decoration:none;margin-top:1rem">📧 Start Your Project</a>
+  </div>
+</div>
+
+<footer>
+  <p class="brand">Agentiqly</p>
+  <p>AI Agents That Build • <a href="https://www.agentiqly.io">www.agentiqly.io</a></p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io">Contact</a>
+  </div>
+  <p class="copyright">© 2026 Agentiqly Holdings</p>
+</footer>
+</body>
+</html>
