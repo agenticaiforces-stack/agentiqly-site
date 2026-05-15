@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Team — Agentiqly AI Agency</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f8fafc;color:#1e293b;font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden}
+:root{
+  --purple:#6d28d9;
+  --purple-light:#8b5cf6;
+  --purple-dark:#4c1d95;
+  --gold:#a78bfa;
+  --bg:#f8fafc;
+  --card-bg:#ffffff;
+  --text:#1e293b;
+  --text-muted:#64748b;
+  --border:#e2e8f0;
+}
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:var(--purple);border-radius:50%;opacity:0.12;animation:particle 8s linear infinite}
+@keyframes particle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.12}90%{opacity:0.12}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
+.particle:nth-child(1){left:10%;animation-duration:12s;animation-delay:0s}
+.particle:nth-child(2){left:30%;animation-duration:9s;animation-delay:2s}
+.particle:nth-child(3){left:50%;animation-duration:11s;animation-delay:4s}
+.particle:nth-child(4){left:70%;animation-duration:8s;animation-delay:1s}
+.particle:nth-child(5){left:90%;animation-duration:10s;animation-delay:3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(248,250,252,0.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.2rem}
+nav .logo span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav a{text-decoration:none;color:var(--text-muted);font-size:0.85rem;font-weight:500;transition:color 0.2s;position:relative}
+nav a:hover{color:var(--purple)}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--purple);transition:width 0.2s}
+nav a:hover::after{width:100%}
+nav a.active{color:var(--purple)}
+nav a.active::after{width:100%}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-cta{background:var(--purple);color:#fff!important;padding:0.45rem 1.25rem;border-radius:9999px!important;font-size:0.8rem!important;font-weight:600!important}
+.nav-cta::after{display:none!important}
+.page-header{padding:8rem 2rem 3rem;max-width:1100px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.page-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:0.75rem}
+.page-header h1 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-header p{color:var(--text-muted);font-size:1rem;line-height:1.7;max-width:600px;margin:0 auto}
+.section-tag{display:inline-flex;align-items:center;gap:0.5rem;color:var(--purple);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:1rem}
+.content{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;position:relative;z-index:1}
+
+/* Founder Card */
+.founder-card{background:var(--card-bg);border:1px solid var(--border);border-radius:1.5rem;padding:3rem;margin-bottom:3rem;display:flex;gap:2.5rem;align-items:start}
+.founder-card .photo{width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;font-weight:700;flex-shrink:0}
+.founder-card .info{flex:1}
+.founder-card .info h2{font-size:1.5rem;font-weight:700;margin-bottom:0.25rem}
+.founder-card .info .title{color:var(--purple);font-weight:600;font-size:0.9rem;margin-bottom:0.75rem}
+.founder-card .info .bio{color:var(--text-muted);font-size:0.9rem;line-height:1.8;margin-bottom:1rem}
+.founder-card .info .links{display:flex;gap:1rem;flex-wrap:wrap}
+.founder-card .info .links a{font-size:0.8rem;color:var(--purple);text-decoration:none;display:flex;align-items:center;gap:0.3rem;font-weight:500}
+.founder-card .info .links a:hover{text-decoration:underline}
+
+/* Stats Bar */
+.stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3rem;padding:2rem;background:var(--card-bg);border:1px solid var(--border);border-radius:1.5rem;text-align:center}
+.stats-bar .stat .num{font-size:1.7rem;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stats-bar .stat .label{font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem}
+
+/* Agent Grid */
+.section-title{font-size:1.5rem;font-weight:700;text-align:center;margin-bottom:2rem}
+.section-title span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:3rem}
+.agent-card{background:var(--card-bg);border:1px solid var(--border);border-radius:1.25rem;padding:1.5rem;transition:all 0.3s;position:relative;overflow:hidden;text-align:center}
+.agent-card:hover{border-color:var(--purple);box-shadow:0 8px 30px rgba(109,40,217,0.06);transform:translateY(-2px)}
+.agent-card .emoji{font-size:2.5rem;margin-bottom:0.75rem}
+.agent-card h3{font-size:0.95rem;font-weight:700;margin-bottom:0.25rem;color:var(--text)}
+.agent-card .role{font-size:0.7rem;color:var(--purple);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem}
+.agent-card p{font-size:0.78rem;color:var(--text-muted);line-height:1.6}
+.agent-card .specialty{display:inline-block;font-size:0.6rem;background:rgba(109,40,217,0.08);color:var(--purple);padding:0.15rem 0.5rem;border-radius:9999px;margin-top:0.5rem;font-weight:600}
+
+/* Values */
+.values-section{background:var(--card-bg);border:1px solid var(--border);border-radius:1.5rem;padding:3rem;margin-bottom:3rem;text-align:center}
+.values-section h2{font-size:1.3rem;font-weight:700;margin-bottom:1.5rem}
+.values-section h2 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.value-item{text-align:center}
+.value-item .icon{font-size:1.5rem;margin-bottom:0.5rem}
+.value-item h4{font-size:0.85rem;font-weight:600;margin-bottom:0.25rem}
+.value-item p{font-size:0.78rem;color:var(--text-muted);line-height:1.6}
+
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.85rem}
+footer a{color:var(--purple);text-decoration:none}
+footer .brand{font-size:1.5rem;font-weight:800;margin-bottom:0.25rem;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0}
+footer .footer-links a{font-size:0.8rem;color:var(--text-muted)}
+footer .footer-links a:hover{color:var(--purple)}
+.copyright{margin-top:1rem;font-size:0.75rem;opacity:0.7}
+
+@media(max-width:768px){
+  .founder-card{flex-direction:column;align-items:center;text-align:center;padding:2rem}
+  .founder-card .info .links{justify-content:center}
+  .agent-grid{grid-template-columns:repeat(2,1fr)}
+  .values-grid{grid-template-columns:1fr}
+  .stats-bar{grid-template-columns:1fr}
+  nav{padding:0.75rem 1rem}
+  nav .nav-links a{font-size:0.75rem}
+  .nav-links{gap:0.75rem}
+}
+@media(max-width:480px){.agent-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="particles">
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<nav>
+  <div class="logo"><span>Agentiqly</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/team.html" class="active">Our Team</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="section-tag">✦ People</p>
+  <h1>Our <span>Team</span></h1>
+  <p>The people and the AI agents behind every delivery.</p>
+</div>
+
+<div class="content">
+
+  <!-- Founder -->
+  <div class="founder-card">
+    <div class="photo">M</div>
+    <div class="info">
+      <h2>Moshe Shimon</h2>
+      <div class="title">Founder &amp; CEO</div>
+      <div class="bio">
+        <p>Moshe is the founder of Agentiqly, an AI agency that builds production-grade software with a fractional team of specialized AI agents operating under a single domain expert.</p>
+        <p>He built the complete Agentiqly ecosystem from the ground up — a 9-agent AI engineering team powered by OpenClaw orchestration that delivers full-stack platforms in weeks instead of months. His approach eliminates the traditional overhead of hiring cycles, communication gaps, and multi-vendor coordination.</p>
+        <p>Under his leadership, Agentiqly has delivered SNF IQ (snfiq.io) — a full-stack AI acquisition intelligence platform for skilled nursing facility investors, launched in 10 weeks by a single expert — and TRAX CRM (traxcrm.help), a multi-tenant referral management platform for post-acute care. Both are HIPAA compliant by design.</p>
+        <p>Moshe owns and operates <strong>New York SEO</strong> (linkedin.com/in/newyorkseo), a digital growth practice, and holds a portfolio of 20+ domain assets spanning AI, healthcare, and enterprise SaaS verticals under the Agentiqly holding company.</p>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/newyorkseo/" target="_blank">🔗 LinkedIn</a>
+        <a href="mailto:moshe@agentiqly.io">📧 moshe@agentiqly.io</a>
+        <a href="https://www.agentiqly.io">🌐 www.agentiqly.io</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat"><div class="num">10 Weeks</div><div class="label">Fastest Concept → Live</div></div>
+    <div class="stat"><div class="num">9</div><div class="label">Specialized AI Agents</div></div>
+    <div class="stat"><div class="num">20+</div><div class="label">Domain Assets</div></div>
+  </div>
+
+  <!-- ClawTeam6 -->
+  <div class="section-title">⚡ The <span>ClawTeam6</span> — AI Engineering Unit</div>
+  <div class="agent-grid">
+
+    <div class="agent-card">
+      <div class="emoji">🎯</div>
+      <h3>Maestro RFVP</h3>
+      <div class="role">Strategy &amp; Execution Lead</div>
+      <p>Strategic orchestration, requirement decomposition, and project flow. Defines scope, assigns specialists, validates deliverables.</p>
+      <div class="specialty">R.F.V.P. Methodology</div>
+    </div>
+
+    <div class="agent-card">
+      <div class="emoji">🔎</div>
+      <h3>Echo Discovery</h3>
+      <div class="role">Deep Research &amp; Discovery</div>
+      <p>Market research, competitive analysis, brand positioning, client interviews, and requirements gathering.</p>
+      <div class="specialty">Discovery &amp; Strategy</div>
+    </div>
+
+    <div class="agent-card">
+      <div class="emoji">🎨</div>
+      <h3>Creative Design Director</h3>
+      <div class="role">Design &amp; UX</div>
+      <p>UI/UX design, brand identity, visual systems, responsive front-end architecture, and design critique.</p>
+      <div class="specialty">Design &amp; UX</div>
+    </div>
+
+    <div class="agent-card">
+      <div class="emoji">⚙️</div>
+      <h3>Forge Engine</h3>
+      <div class="role">Full-Stack Engineering</div>
+      <p>Full-stack development, API architecture, database design, deployment, and infrastructure.</p>
+      <div class="specialty">Engineering</div>
+    </div>
+
+    <div class="agent-card">
+      <div class="emoji">🧪</div>
+      <h3>Aegis Probe</h3>
+      <div class="role">QA &amp; Compliance</div>
+      <p>Quality assurance, security audits, HIPAA compliance verification, penetration testing, and validation.</p>
+      <div class="specialty">QA &amp; Security</div>
+    </div>
+
+    <div class="agent-card">
+      <div class="emoji">📡</div>
+      <h3>Helix Data</h3>
+      <div class="role">Data Engineering &amp; Analytics</div>
+      <p>Data pipelines, ETL, database modeling, analytics dashboards, and data enrichment automation.</p>
+      <div class="specialty">Data Engineering</div>
+    </div>
+
+    <div class="agent-card">
+      <div class="emoji">☁️</div>
+      <h3>Nimbus Relay</h3>
+      <div class="role">DevOps &amp; Deployment</div>
+      <p>CI/CD, cloud infrastructure, DNS management, SSL, deployment automation, and monitoring.</p>
+      <div class="specialty">DevOps</div>
+    </div>
+
+    <div class="agent-card">
+      <div class="emoji">🛡️</div>
+      <h3>Sentinel Curator</h3>
+      <div class="role">Governance &amp; Security</div>
+      <p>Token budget enforcement, audit trail, pre-approved sources only, cost tracking, and safety guardrails.</p>
+      <div class="specialty">Security &amp; Governance</div>
+    </div>
+
+    <div class="agent-card">
+      <div class="emoji">📖</div>
+      <h3>Chronicler Vault</h3>
+      <div class="role">Documentation &amp; Knowledge</div>
+      <p>Documentation, knowledge management, session logging, client deliverables, and playbook maintenance.</p>
+      <div class="specialty">Documentation</div>
+    </div>
+
+  </div>
+
+  <!-- Operating Model -->
+  <div class="values-section">
+    <h2>How We <span>Operate</span></h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="icon">🎯</div>
+        <h4>One Expert, Full Ownership</h4>
+        <p>No hiring cycles, no handoffs, no communication gaps. One domain expert + 9 AI specialists = a full engineering team in a single brain.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">⚡</div>
+        <h4>Deterministic Guardrails</h4>
+        <p>Every agent operates with strict hard/soft rules, priority hierarchy, and auto-fail validation. No hallucinations, no free browsing.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">🔗</div>
+        <h4>Persistent Memory</h4>
+        <p>Agents don't forget sessions. Shared memory, agent handoff with context transfer, and persistent brain architecture.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="founder-card" style="background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;text-align:center;display:block">
+    <h2 style="color:#fff;font-size:1.3rem;margin-bottom:1rem">Want to Work With the Team?</h2>
+    <p style="color:rgba(255,255,255,0.85);font-size:0.95rem;max-width:500px;margin:0 auto 1.5rem">One conversation. You describe the vision. We make it real.</p>
+    <a href="mailto:moshe@agentiqly.io" style="display:inline-flex;background:#fff;color:var(--purple);padding:0.75rem 1.5rem;border-radius:9999px;font-weight:600;text-decoration:none">📧 moshe@agentiqly.io</a>
+  </div>
+
+</div>
+
+<footer>
+  <p class="brand">Agentiqly</p>
+  <p>AI Agents That Build • <a href="https://www.agentiqly.io">www.agentiqly.io</a></p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/team.html">Our Team</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io">Contact</a>
+  </div>
+  <p class="copyright">© 2026 Agentiqly Holdings</p>
+</footer>
+</body>
+</html>
