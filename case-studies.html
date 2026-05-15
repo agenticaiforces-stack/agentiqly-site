@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — Agentiqly AI Agency</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f8fafc;color:#1e293b;font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden}
+:root{
+  --purple:#6d28d9;
+  --purple-light:#8b5cf6;
+  --purple-dark:#4c1d95;
+  --gold:#a78bfa;
+  --bg:#f8fafc;
+  --card-bg:#ffffff;
+  --text:#1e293b;
+  --text-muted:#64748b;
+  --border:#e2e8f0;
+}
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;background:var(--purple);border-radius:50%;opacity:0.12;animation:particle 8s linear infinite}
+@keyframes particle{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.12}90%{opacity:0.12}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
+.particle:nth-child(1){left:10%;animation-duration:12s;animation-delay:0s}
+.particle:nth-child(2){left:30%;animation-duration:9s;animation-delay:2s}
+.particle:nth-child(3){left:50%;animation-duration:11s;animation-delay:4s}
+.particle:nth-child(4){left:70%;animation-duration:8s;animation-delay:1s}
+.particle:nth-child(5){left:90%;animation-duration:10s;animation-delay:3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(248,250,252,0.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .logo{display:flex;align-items:center;gap:0.5rem;font-weight:700;font-size:1.2rem}
+nav .logo span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav a{text-decoration:none;color:var(--text-muted);font-size:0.85rem;font-weight:500;transition:color 0.2s;position:relative}
+nav a:hover{color:var(--purple)}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--purple);transition:width 0.2s}
+nav a:hover::after{width:100%}
+nav a.active{color:var(--purple)}
+nav a.active::after{width:100%}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-cta{background:var(--purple);color:#fff!important;padding:0.45rem 1.25rem;border-radius:9999px!important;font-size:0.8rem!important;font-weight:600!important}
+.nav-cta::after{display:none!important}
+.page-header{padding:8rem 2rem 3rem;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.page-header h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:0.75rem}
+.page-header h1 span{background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-header p{color:var(--text-muted);font-size:1rem;line-height:1.7;max-width:600px}
+.section-tag{display:inline-flex;align-items:center;gap:0.5rem;color:var(--purple);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:1rem}
+.content{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;position:relative;z-index:1}
+.deck-embed{margin-bottom:2rem;border-radius:1.5rem;overflow:hidden;border:1px solid var(--border);background:var(--card-bg)}
+.deck-embed iframe{width:100%;height:85vh;border:none;display:block}
+.synopsis-card{background:var(--card-bg);border:1px solid var(--border);border-radius:1.5rem;padding:2.5rem;margin-bottom:2.5rem;transition:border-color 0.3s}
+.synopsis-card:hover{border-color:var(--purple)}
+.synopsis-card h2{font-size:1.3rem;font-weight:700;margin-bottom:0.75rem}
+.synopsis-card p{color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-bottom:0.75rem}
+.synopsis-card p:last-child{margin-bottom:0}
+.synopsis-card .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;padding:1.5rem;background:var(--bg);border-radius:1rem}
+.synopsis-card .stat-row .stat{text-align:center}
+.synopsis-card .stat-row .stat .num{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.synopsis-card .stat-row .stat .label{font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem}
+.synopsis-card .tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1rem}
+.synopsis-card .tags span{font-size:0.7rem;background:var(--bg);border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:9999px;color:var(--text-muted)}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:0.85rem}
+footer a{color:var(--purple);text-decoration:none}
+footer .brand{font-size:1.5rem;font-weight:800;margin-bottom:0.25rem;background:linear-gradient(135deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+footer .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0}
+footer .footer-links a{font-size:0.8rem;color:var(--text-muted)}
+footer .footer-links a:hover{color:var(--purple)}
+.copyright{margin-top:1rem;font-size:0.75rem;opacity:0.7}
+@media(max-width:768px){
+  .synopsis-card .stat-row{grid-template-columns:1fr}
+  .deck-embed iframe{height:50vh}
+  nav{padding:0.75rem 1rem}
+  nav .nav-links a{font-size:0.75rem}
+  .nav-links{gap:0.75rem}
+}
+</style>
+</head>
+<body>
+<div class="particles">
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<nav>
+  <div class="logo"><span>Agentiqly</span></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html" class="active">Case Studies</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="section-tag">✦ Deliveries</p>
+  <h1>Case <span>Studies</span></h1>
+  <p>What we've actually built. Real projects, real metrics, real outcomes.</p>
+</div>
+
+<div class="content">
+
+  <!-- SNF IQ DECK EMBED -->
+  <div class="deck-embed">
+    <iframe src="https://snfiq.io/snfiq-case-study/" allowfullscreen></iframe>
+  </div>
+
+  <!-- SNF IQ SYNOPSIS -->
+  <div class="synopsis-card">
+    <h2>SNF IQ — Acquisition Intelligence Platform</h2>
+    <p>A full-stack AI platform for skilled nursing facility (SNF) acquisition evaluation. Built from concept to live deployment in 10 weeks by a single domain expert — no team of seven, no 9-month dev cycle.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="num">10 Weeks</div><div class="label">Concept → Live</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">Domain Expert</div></div>
+      <div class="stat"><div class="num">4,880+</div><div class="label">Facilities Indexed</div></div>
+    </div>
+    <p><strong>What was built:</strong> A full-stack AI acquisition intelligence platform with three access tiers (Trial/Full/Admin), real-time IQ scoring engine, Facilities Explorer with 4,880+ indexed SNFs, VERA AI autonomous outreach agent, MARSHAL data verification console, end-to-end deal pipeline with built-in NDA e-signing, and admin command center. Backend includes 22 API route modules, CMS/HCRIS/EDGAR data ingestion pipelines, Perplexity AI integration, and a 6-signal scoring engine.</p>
+    <p><strong>HIPAA compliant.</strong> HMAC session tokens. Tier-based access controls. FCRA/CCPA compliant. No hardcoded credentials.</p>
+    <div class="tags">
+      <span>snfiq.io</span><span>10-Week Build</span><span>Next.js</span><span>HIPAA Compliant</span><span>VERA AI Agent</span><span>MARSHAL</span>
+    </div>
+  </div>
+
+  <!-- TRAX CRM SYNOPSIS -->
+  <div class="synopsis-card">
+    <h2>TRAX CRM — Referral Management for SNFs</h2>
+    <p>A multi-tenant referral management and communications platform for skilled nursing and post-acute care facilities. Currently in active development — live demos delivered, client evaluating feature direction.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="num">2</div><div class="label">Demos Delivered</div></div>
+      <div class="stat"><div class="num">Active</div><div class="label">Development</div></div>
+      <div class="stat"><div class="num">✓</div><div class="label">HIPAA Compliant</div></div>
+    </div>
+    <p><strong>What it solves:</strong> SNFs and post-acute care facilities lose referrals because tracking is manual, siloed, and slow. TRAX CRM provides a single system for referral intake, real-time census/occupancy monitoring, multi-facility management, and internal communications (TRAX Connect™). Two demo tracks presented — Admin view (full facility oversight) and Marketer view (referral pipeline management).</p>
+    <p><strong>HIPAA compliant by design.</strong> Separate project from SNF IQ — unrelated product, different market.</p>
+    <div class="tags">
+      <span>traxcrm.help</span><span>Next.js</span><span>Railway</span><span>HIPAA Compliant</span><span>TRAX Connect™</span>
+    </div>
+  </div>
+
+  <div class="synopsis-card" style="background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;border:none;text-align:center">
+    <h2 style="color:#fff">Next Case Study Could Be Yours</h2>
+    <p style="color:rgba(255,255,255,0.85);font-size:1rem">One conversation. No sales pitch. You own everything.</p>
+    <a href="mailto:moshe@agentiqly.io" style="display:inline-flex;background:#fff;color:var(--purple);padding:0.75rem 1.5rem;border-radius:9999px;font-weight:600;text-decoration:none;margin-top:1rem;font-size:0.9rem">📧 moshe@agentiqly.io</a>
+  </div>
+</div>
+
+<footer>
+  <p class="brand">Agentiqly</p>
+  <p>AI Agents That Build • <a href="https://www.agentiqly.io">www.agentiqly.io</a></p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/case-studies.html">Case Studies</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:moshe@agentiqly.io">Contact</a>
+  </div>
+  <p class="copyright">© 2026 Agentiqly Holdings</p>
+</footer>
+</body>
+</html>
