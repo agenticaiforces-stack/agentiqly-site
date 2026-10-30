@@ -30,6 +30,7 @@ h2{font-size:clamp(1.6rem,3.6vw,2.4rem)}
 h3{font-size:1.2rem;letter-spacing:-.01em}
 p{margin:0 0 1em}
 .lede{font-size:1.2rem;color:var(--muted);max-width:40em}
+.top,.page-h,.cta-band{--good:#5fd39a;--warn:#f0b44c;--hold:#9aa5b4}
 .top{background:var(--navy);color:var(--on-navy);--aqua:var(--aqua-hi)}
 .bar{display:flex;align-items:center;gap:16px;min-height:64px}
 .brand{display:block;color:var(--on-navy);line-height:0;margin-right:auto}
