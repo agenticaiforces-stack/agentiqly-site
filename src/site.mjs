@@ -1,5 +1,5 @@
 // Site content. Statuses and team names come from the owner (task file, 29–30 Oct 2026).
-// Placeholders the owner fills in stay visible as [DATE] / [MONTH] until he gives them.
+// Dates from the owner (30 Oct 2026). A value written as [DATE] or [MONTH] shows highlighted as a placeholder.
 export const SITE = {
   url: "https://www.agentiqly.io",
   name: "AgentiQly.io",
@@ -8,9 +8,9 @@ export const SITE = {
   title: "AgentiQly.io · Israeli–US AI agentic startup incubator",
   description: "AgentiQly.io is a joint Israeli–US AI agentic startup incubator. We build AI products, run them on our own businesses, and publish what happened.",
   footerLine: "Israeli–US AI agentic startup incubator",
-  studioLogAsOf: "[DATE]",
-  programStart: "[DATE]",
-  firstReport: "[MONTH]",
+  studioLogAsOf: "30 October 2026",
+  programStart: "30 October 2026",
+  firstReport: "November 2026",
 };
 
 export const NAV = [

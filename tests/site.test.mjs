@@ -50,11 +50,13 @@ test("internal links and assets resolve", () => {
   }
 });
 
-test("placeholders stay visibly marked", () => {
+test("owner dates show and no placeholder is left", () => {
   const home = fs.readFileSync(path.join(OUT, "index.html"), "utf8");
-  assert.match(home, /<span class="ph"[^>]*>\[DATE\]<\/span>/);
-  assert.match(home, /<span class="ph"[^>]*>\[MONTH\]<\/span>/);
+  assert.match(home, /status as of 30 October 2026/);
+  assert.match(home, /<dd>30 October 2026<\/dd>/);
+  assert.match(home, /<dd>November 2026<\/dd>/);
   assert.match(home, /Example screen · invented data/i);
+  for (const f of realPages) assert.doesNotMatch(fs.readFileSync(f, "utf8"), /\[(DATE|MONTH)\]/, path.relative(OUT, f));
 });
 
 test("sitemap lists every real page and robots points to it", () => {
