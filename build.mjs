@@ -188,6 +188,7 @@ function venture(v) {
     ? v.market.map((m) => `<p>${esc(m.text)}</p><p class="src">Source: <a href="${esc(m.source.url)}" rel="noopener">${esc(m.source.title)}</a></p>`).join("")
     : `<p>We haven't published a sourced figure for this market yet. We'd rather show none than a guess.</p>`;
   const rows = [
+    ...(v.started ? [["How it started", `<p>${esc(v.started)}</p>`]] : []),
     ["Who it's for", `<p>${esc(v.customer)}</p>`],
     ["The problem", `<p>${esc(v.problem)}</p>`],
     ["The market", market],

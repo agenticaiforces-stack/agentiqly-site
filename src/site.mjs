@@ -94,7 +94,7 @@ export const VENTURES = [
   {
     slug: "adjusterospro",
     name: "AdjusterOS Pro",
-    status: "build",
+    status: "beta",
     site: "https://adjusterospro.com",
     line: "A working system for insurance adjusters: claims intake, documents and deadlines in one place.",
     note: null,
@@ -105,7 +105,8 @@ export const VENTURES = [
     ],
     others: "General claims-management software, carrier portals, and folders of email and spreadsheets.",
     differs: "It is built for the adjuster's side of the claim: intake, documents, deadlines and evidence in one place, ready for the phone.",
-    potential: "Finish the build with working adjusters, then sell it by subscription. Success looks like adjusters who keep every claim's deadlines and evidence in one place.",
+    started: "We first built it for a client. We saw that other adjusters had the same need, so with the client's approval we built it for the wider market.",
+    potential: "One beta tester has used it for a couple of months, and a second has just joined. The next step is finishing it with them, then selling it by subscription. Success looks like adjusters who keep every claim's deadlines and evidence in one place.",
   },
   {
     slug: "snfiq",
