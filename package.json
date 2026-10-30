@@ -1,0 +1,12 @@
+{
+  "name": "agentiqly-site",
+  "private": true,
+  "type": "module",
+  "description": "agentiqly.io static site",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node build.mjs",
+    "preview-build": "PREVIEW=1 node build.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
+}
