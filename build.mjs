@@ -78,18 +78,18 @@ function home(posts) {
 <div>
 <p class="mono kicker rise">${esc(SITE.kicker)}</p>
 <h1 class="rise r2">We build AI products, run them on our own businesses, and <span class="script">show you</span> what happened.</h1>
-<p class="lede rise r3">Every product earns its place on a business we own before we offer it to yours.</p>
+<p class="lede rise r3">Each venture is built as a company that can grow, raise money and one day be sold. Before it's offered to anyone, it has to work on a real business.</p>
 <div class="ctas rise r4"><a class="btn on-dark" href="#ventures">See the ventures →</a><a class="btn ghost" href="#proof">How we prove results</a></div>
 <p class="fine rise r4">Nothing goes live without a person's yes.</p>
 </div>
 <figure class="screen" style="margin:0" aria-label="Example screen with invented data: the content engine's morning queue">
 <div class="screen-h mono"><span>Content engine · this morning</span><span class="tag">Example screen · invented data</span></div>
-<div class="row"><h3>How to fix check alignment in five minutes</h3><span class="pill wait">WAITING FOR YOU</span>
+<div class="row"><h3>How to read a carrier's denial letter, line by line</h3><span class="pill wait">WAITING FOR YOU</span>
 <p>Asked 23 times in chat this month · step-by-step guide · writer: reason-why method</p>
 <div class="acts" aria-hidden="true"><span>Approve</span><span>Ask for a change</span></div></div>
-<div class="row"><h3>Is a voucher check right for payroll?</h3><span class="pill live"><svg class="chk" viewBox="0 0 20 20" aria-hidden="true"><path pathLength="1" d="M4 10.5l4 4 8-9"/></svg>WENT LIVE 6:02 AM</span>
+<div class="row"><h3>Can a renewal price go up without notice?</h3><span class="pill live"><svg class="chk" viewBox="0 0 20 20" aria-hidden="true"><path pathLength="1" d="M4 10.5l4 4 8-9"/></svg>WENT LIVE 6:02 AM</span>
 <p>FAQ answer · 3 sentences · indexed</p></div>
-<div class="row"><h3>The history of business checks</h3><span class="pill held">HELD</span>
+<div class="row"><h3>The history of the insurance adjuster</h3><span class="pill held">HELD</span>
 <p>Needs original sources before writing</p></div>
 </figure>
 </div></div>
@@ -101,7 +101,7 @@ function home(posts) {
 
 <section id="ventures" class="alt"><div class="wrap">
 <div class="sec-h"><span class="mono">Ventures · status as of ${ph(SITE.studioLogAsOf)}</span><h2>What we are building, and where each one stands.</h2>
-<p class="lede">One product is with a client, one runs on our own sites, the rest are being built. The labels say which.</p></div>
+<p class="lede">Two products are in beta with real users, one runs on our own sites, the rest are being built. The labels say which.</p></div>
 <ul class="vlist">${ventures}</ul>
 </div></section>
 
@@ -119,9 +119,9 @@ function home(posts) {
 <section class="alt"><div class="wrap cols">
 <div><div class="sec-h"><span class="mono">How we build</span><h2>Four rules every product follows.</h2></div></div>
 <ul class="rules">
-<li><b>Our businesses first.</b><span>A product runs on something we own before anyone else pays for it.</span></li>
+<li><b>Proven on a real business first.</b><span>A product has to work for a real business, ours or a first client's, before anyone else pays for it.</span></li>
 <li><b>Every fact has a source.</b><span>If we can't show where a figure came from, it doesn't go out.</span></li>
-<li><b>A person says yes.</b><span>Nothing publishes, sends or spends without approval, unless the owner turns that on.</span></li>
+<li><b>A person says yes.</b><span>Nothing publishes, sends or spends without approval, unless the business owner chooses to let it post on its own.</span></li>
 <li><b>Results in the open.</b><span>What worked, what didn't, with the raw numbers.</span></li>
 </ul>
 </div></section>
@@ -137,10 +137,11 @@ ${blog}
 <p style="margin-top:20px"><a href="/blog/">All posts →</a></p>
 </div></section>
 
-<section class="cta-band"><div class="wrap">
-<h2>Have a business problem an AI agent should handle?</h2>
-<p class="lede">Tell us what it is. If we can't build it well, we'll say so.</p>
-<a class="btn on-dark" href="mailto:${SITE.email}">Email Moshe</a>
+<section id="founders" class="cta-band" aria-labelledby="founders-title"><div class="wrap">
+<p class="mono kicker">For founders</p>
+<h2 id="founders-title">Know a market from the inside?</h2>
+<p class="lede">We're choosing the next ventures. Tell us the problem, who has it and what they pay to deal with it today. If we can't build it well, we'll say so.</p>
+<a class="btn on-dark" href="mailto:${SITE.email}">Talk to Moshe</a>
 </div></section>`;
 
   return {
@@ -163,16 +164,10 @@ ${blog}
 // ---------- team ----------
 function team() {
   const initials = (n) => n.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-  const group = (label, list) => {
-    let hidden = 0;
-    const named = list.filter((p) => p.name).length;
-    return `<h2>${label}</h2><ul class="people">${list.map((p) => {
-      if (p.name) return `<li><span class="mg" aria-hidden="true">${initials(p.name)}</span><span><b>${esc(p.name)}</b><span>Bio coming</span></span></li>`;
-      hidden++;
-      const ord = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth"][named + hidden - 1];
-      return `<li><span class="mg" aria-hidden="true">·</span><span><b>${ord} member</b><span>Name withheld, by choice</span></span></li>`;
-    }).join("")}</ul>`;
-  };
+  const group = (label, list) =>
+    `<h2>${label}</h2><ul class="people">${list.map((p) =>
+      `<li><span class="mg" aria-hidden="true">${initials(p.name)}</span><span><b>${esc(p.name)}</b></span></li>`
+    ).join("")}</ul>`;
   return {
     title: "Team",
     description: "The people behind AgentiQly.io, a joint Israeli–US AI agentic startup incubator, with teams in Israel and the United States.",
@@ -211,7 +206,7 @@ function venturesIndex() {
   return {
     title: "Ventures",
     description: "Every AgentiQly.io venture and where it stands: in beta, on our own sites, pre-launch, in build or on hold.",
-    body: `<div class="page-h"><div class="wrap"><span class="mono">Ventures · status as of ${ph(SITE.studioLogAsOf)}</span><h1>Ventures</h1><p class="lede">What we are building, and where each one stands.</p></div></div>
+    body: `<div class="page-h"><div class="wrap"><span class="mono">Ventures · status as of ${ph(SITE.studioLogAsOf)}</span><h1>Ventures</h1><p class="lede">What we are building, and where each one stands. Two products are in beta with real users, one runs on our own sites, the rest are being built. The labels say which.</p></div></div>
 <section style="border-top:0"><div class="wrap"><ul class="vlist">${VENTURES.map((v) => `<li><a class="v" href="/ventures/${v.slug}/"><span class="nm">${esc(v.name)}</span><span class="ln">${statusTag(v.status)}${esc(v.line)}</span><span class="go">Profile →</span></a></li>`).join("")}</ul></div></section>`,
   };
 }

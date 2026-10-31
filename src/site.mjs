@@ -66,13 +66,13 @@ export const VENTURES = [
     name: "LifeIQ",
     status: "prelaunch",
     site: "https://lifeiq.dev",
-    line: "A personal AI companion that keeps track of renewals, dates and the paperwork of daily life.",
+    line: "A personal AI companion that connects to your email and WhatsApp and finds the bills, renewals and refund windows you've forgotten about.",
     note: null,
     customer: "People and families who juggle insurance renewals, warranties, subscriptions, appointments and the paperwork that comes with them.",
     problem: "The dates live in inboxes, drawers and other people's portals. Missing one costs money: a lapsed policy, an auto-renewal, a late fee.",
     market: [],
     others: "Calendar and reminder apps, password and document vaults, and spreadsheets.",
-    differs: "It reads the paperwork and keeps the dates for you, instead of waiting for you to type them in.",
+    differs: "You connect your email once. It finds what needs you and hands you a short list, instead of waiting for you to type in dates.",
     potential: "Launch to a first group of users, then grow by word of mouth and search. Success looks like users who stop missing renewals, which we will measure and publish.",
   },
   {
@@ -116,7 +116,7 @@ export const VENTURES = [
     line: "Acquisition research for skilled nursing facilities, scoring which owners are likely to sell.",
     note: "On hold while we finish the other ventures.",
     customer: "Investors and operators who buy skilled nursing facilities.",
-    problem: "Good facilities often change hands before they reach the open market. Spotting a likely seller early means reading years of public filings, inspections and cost reports.",
+    problem: "Spotting a likely seller early means reading years of public filings, inspections and cost reports by hand.",
     market: [
       { text: "14,686 nursing homes were listed in the Centers for Medicare & Medicaid Services provider data as of its 1 October 2026 update.", source: { title: "CMS Provider Data Catalog, Nursing Homes: Provider Information", url: "https://data.cms.gov/provider-data/dataset/4pq5-n9py" } },
     ],
@@ -131,12 +131,10 @@ export const TEAM = {
     { name: "Moshe Shimon" },
     { name: "Dan Kreisel" },
     { name: "Eliyahu Pereira" },
-    { name: null },
   ],
   us: [
     { name: "Ron Kreisel" },
     { name: "Ben Itzkowitz" },
-    { name: null },
   ],
 };
 
