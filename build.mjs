@@ -179,6 +179,7 @@ function team() {
 // ---------- ventures ----------
 function venture(v) {
   const s = STATUS[v.status];
+  if (v.private) return privateVenture(v, s);
   const market = v.market.length
     ? v.market.map((m) => `<p>${esc(m.text)}</p><p class="src">Source: <a href="${esc(m.source.url)}" rel="noopener">${esc(m.source.title)}</a></p>`).join("")
     : `<p>We haven't published a sourced figure for this market yet. We'd rather show none than a guess.</p>`;
@@ -199,6 +200,18 @@ function venture(v) {
 ${v.site ? `<p><a href="${esc(v.site)}" rel="noopener" style="color:var(--aqua-hi)">${esc(v.site.replace(/^https?:\/\//, ""))} →</a></p>` : ""}</div></div>
 <section style="border-top:0;padding-top:24px"><div class="wrap">${rows.map(([h, b]) => `<div class="vsec"><h2>${h}</h2><div>${b}</div></div>`).join("")}
 <p style="margin-top:28px"><a href="/#ventures">← All ventures</a></p></div></section>`,
+  };
+}
+
+// Private ventures show only the name, status, one line and a link.
+function privateVenture(v, s) {
+  return {
+    title: `${v.name}: ${s.label.toLowerCase()}`,
+    description: `${v.name}, an AgentiQly.io venture. ${v.line}`,
+    body: `<div class="page-h"><div class="wrap"><p class="crumbs"><a href="/#ventures">Ventures</a> / ${esc(v.name)}</p>
+<span class="mono">${statusTag(v.status)}</span><h1>${esc(v.name)}</h1><p class="lede">${esc(v.line)}</p>
+<p><a href="${esc(v.site)}" rel="noopener" style="color:var(--aqua-hi)">${esc(v.site.replace(/^https?:\/\//, ""))} →</a></p>
+<p style="margin-top:28px"><a href="/#ventures">← All ventures</a></p></div></div>`,
   };
 }
 

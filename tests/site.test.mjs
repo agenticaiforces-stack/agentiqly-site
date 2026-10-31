@@ -108,3 +108,17 @@ test("markdown renderer escapes html and blocks script links", () => {
   assert.equal(meta.faq[0].q, "a");
   assert.equal(body, "hi");
 });
+
+test("new ventures: Shaket stays discreet, Cadenza stays general wellness, order kept", () => {
+  const home = fs.readFileSync(path.join(OUT, "index.html"), "utf8");
+  const order = ["agentiqly-ai", "content-engine", "lifeiq", "clearopsiq", "adjusterospro", "snfiq", "cadenza", "scourqly", "shaket"]
+    .map((s) => home.indexOf(`href="/ventures/${s}/"`));
+  assert.ok(order.every((i, n) => i > -1 && (n === 0 || i > order[n - 1])), `venture order ${order}`);
+  const shaket = fs.readFileSync(path.join(OUT, "ventures/shaket/index.html"), "utf8");
+  assert.doesNotMatch(shaket, /class="vsec"/);
+  assert.match(shaket, /Details are shared with investors only\./);
+  assert.match(shaket, /href="https:\/\/shaket\.io"/);
+  for (const w of [/market brief/i, /trade/i, /returns?\b/i, /strategy/i, /\$\d/]) assert.doesNotMatch(shaket.replace(/<head>[\s\S]*?<\/head>/, ""), w);
+  const cadenza = fs.readFileSync(path.join(OUT, "ventures/cadenza/index.html"), "utf8");
+  for (const w of [/\btreat/i, /symptom/i, /therapy/i, /\bcure/i, /diagnos/i, /clinical/i, /improves?\b/i]) assert.doesNotMatch(cadenza, w);
+});
