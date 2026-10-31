@@ -174,6 +174,15 @@ function header(path) {
 </div></header>`;
 }
 
+const POLICY_LINKS = [
+  { href: "/legal/privacy/", label: "Privacy" },
+  { href: "/legal/terms/", label: "Terms" },
+  { href: "/legal/cookies/", label: "Cookies" },
+  { href: "/legal/accessibility/", label: "Accessibility checked 31 Oct 2026" },
+  { href: "/legal/security/", label: "Security" },
+  { href: "/legal/contact/", label: "Contact" },
+];
+
 function footer() {
   const year = new Date().getUTCFullYear();
   return `<footer><div class="wrap">
@@ -181,6 +190,7 @@ function footer() {
 <div><a href="/" aria-label="AgentiQly.io home" style="line-height:0;display:inline-block">${LOGO}</a><p style="margin-top:14px">${esc(SITE.footerLine)}.<br>Israel and the United States.</p></div>
 <ul>${NAV.map((n) => `<li><a href="${n.href}">${n.label}</a></li>`).join("")}</ul>
 <ul><li><a href="mailto:${SITE.email}">${SITE.email}</a></li><li><a href="/blog/rss.xml">Blog feed (RSS)</a></li></ul>
+<ul aria-label="Policies">${POLICY_LINKS.map((n) => `<li><a href="${n.href}">${n.label}</a></li>`).join("")}</ul>
 </div>
 <p class="legal">© ${year} AgentiQly.io</p>
 </div></footer>`;
