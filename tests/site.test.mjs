@@ -95,6 +95,8 @@ test("preview build is noindex", () => {
   execFileSync(process.execPath, ["build.mjs"], { cwd: ROOT, env: { ...process.env, OUT_DIR: out3, PREVIEW: "1" } });
   assert.match(fs.readFileSync(path.join(out3, "index.html"), "utf8"), /noindex,nofollow/);
   assert.match(fs.readFileSync(path.join(out3, "robots.txt"), "utf8"), /Disallow: \//);
+  assert.equal(fs.existsSync(path.join(out3, "team.html")), false);
+  assert.match(fs.readFileSync(path.join(out3, "_redirects"), "utf8"), /^\/team\.html \/team\/ 301$/m);
 });
 
 test("markdown renderer escapes html and blocks script links", () => {

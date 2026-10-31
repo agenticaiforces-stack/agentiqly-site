@@ -293,7 +293,9 @@ export function build() {
     body: `<div class="page-h"><div class="wrap"><span class="mono">404</span><h1>That page isn't here.</h1><p class="lede">It may have moved when we rebuilt the site.</p><p><a class="btn on-dark" href="/">Go to the home page</a></p></div></div>` }));
 
   const moved = { "about.html": "/#how", "projects.html": "/#ventures", "case-studies.html": "/#proof", "team.html": "/team/", "index.html": null };
-  for (const [from, to] of Object.entries(moved)) if (to) write(from, redirectStub(to));
+  // Netlify previews serve team.html for /team/ when both exist, so previews use _redirects instead of stub pages.
+  if (PREVIEW) write("_redirects", Object.entries(moved).filter(([, to]) => to).map(([from, to]) => `/${from} ${to} 301`).join("\n") + "\n");
+  else for (const [from, to] of Object.entries(moved)) if (to) write(from, redirectStub(to));
 
   write("blog/rss.xml", rss(posts));
   write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((p) => `<url><loc>${p.loc}</loc>${p.lastmod ? `<lastmod>${p.lastmod}</lastmod>` : ""}</url>`).join("\n")}\n</urlset>\n`);
