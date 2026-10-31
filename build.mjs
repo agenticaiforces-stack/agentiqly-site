@@ -271,6 +271,8 @@ export function build() {
   fs.rmSync(OUT, { recursive: true, force: true });
   fs.mkdirSync(OUT, { recursive: true });
   copyDir(path.join(ROOT, "assets"), path.join(OUT, "assets"));
+  // Policy pages and security.txt, rendered from the shared AgentiQly.io templates (agentiqly-hq tools/policies).
+  copyDir(path.join(ROOT, "static"), OUT);
   for (const f of ["favicon.svg"]) fs.copyFileSync(path.join(ROOT, "assets/brand", f), path.join(OUT, f));
   for (const f of ["og.png", "favicon-32.png", "apple-touch-icon.png"]) {
     const src = path.join(ROOT, "assets/brand", f);

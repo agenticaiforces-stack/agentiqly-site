@@ -1,0 +1,8 @@
+# Security contact for agentiqly.io (RFC 9116). Operated by AgentiQly.io.
+# Test only against your own account and data, never anyone else's.
+Contact: mailto:moshe@agentiqly.io
+Expires: 2027-10-31T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.agentiqly.io/.well-known/security.txt
+Policy: https://www.agentiqly.io/legal/security/
+
