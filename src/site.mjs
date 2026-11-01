@@ -137,7 +137,7 @@ export const VENTURES = [
     market: [],
     others: "Reminder apps, habit trackers with streaks and scores, and general wellness apps that wait to be opened.",
     differs: "It reaches out first, offers one thing at a time and does it with you, keeps no streaks or scores, and remembers what you've told it. It is a general wellness companion, not a medical device, and it says so.",
-    potential: "Finish it with the small early-access group now shaping it, then open it to the public. Success looks like people who keep saying yes to the next small thing.",
+    potential: "Finish it, then open it to the public. Success looks like people who keep saying yes to the next small thing.",
   },
   {
     slug: "scourqly",
