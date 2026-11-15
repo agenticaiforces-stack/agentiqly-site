@@ -131,3 +131,15 @@ test("founders can apply: /apply/ is built, in the sitemap and nav, and its emai
   assert.match(fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8"), /\/apply\/<\/loc>/);
   assert.match(fs.readFileSync(path.join(OUT, "index.html"), "utf8"), /href="\/apply\/"/);
 });
+
+test("founders never send the idea to apply, and businesses have their own page (owner, 15 Nov 2026)", () => {
+  const apply = fs.readFileSync(path.join(OUT, "apply/index.html"), "utf8");
+  assert.match(apply, /signed NDA/);
+  assert.doesNotMatch(apply, /first ten customers/i);
+  const b = fs.readFileSync(path.join(OUT, "build/index.html"), "utf8");
+  assert.match(b, /An AI app built for how your business works/);
+  assert.doesNotMatch(b, /\$\{/);
+  assert.match(b, /"FAQPage"/);
+  assert.match(fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8"), /\/build\/<\/loc>/);
+  assert.match(fs.readFileSync(path.join(OUT, "index.html"), "utf8"), /href="\/build\/"/);
+});

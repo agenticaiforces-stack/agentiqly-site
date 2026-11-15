@@ -19,7 +19,8 @@ export const NAV = [
   { href: "/#how", label: "How we build" },
   { href: "/team/", label: "Team" },
   { href: "/blog/", label: "Blog" },
-  { href: "/apply/", label: "Apply" },
+  { href: "/build/", label: "Build for you" },
+  { href: "/apply/", label: "Founders" },
 ];
 
 // tone: good = green label, warn = amber label, muted = grey label
