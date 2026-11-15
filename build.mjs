@@ -198,7 +198,7 @@ function apply() {
 <ul class="rules">
 <li><b>Read by the founding team only.</b><span>Applications are not shared outside AgentiQly.io.</span></li>
 <li><b>No details until there's a signed NDA.</b><span>The how comes after a call and a signed NDA, never in the first email.</span></li>
-<li><b>We don't build a submitted idea without its founder.</b><span>If we pass, we say so and why. The idea goes back to you.</span></li>
+<li><b>An honest answer.</b><span>If it isn't a fit, we say so and why.</span></li>
 </ul>
 </div></section>
 <section class="alt"><div class="wrap cols">
