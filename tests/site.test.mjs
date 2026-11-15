@@ -122,3 +122,12 @@ test("new ventures: Shaket stays discreet, Cadenza stays general wellness, order
   const cadenza = fs.readFileSync(path.join(OUT, "ventures/cadenza/index.html"), "utf8");
   for (const w of [/\btreat/i, /symptom/i, /therapy/i, /\bcure/i, /diagnos/i, /clinical/i, /improves?\b/i]) assert.doesNotMatch(cadenza, w);
 });
+
+test("founders can apply: /apply/ is built, in the sitemap and nav, and its email links work (owner, 15 Nov 2026)", () => {
+  const html = fs.readFileSync(path.join(OUT, "apply/index.html"), "utf8");
+  assert.match(html, /Build your startup with us/);
+  assert.doesNotMatch(html, /\$\{/);
+  assert.match(html, /mailto:[^"]+@agentiqly\.io\?subject=Apply/);
+  assert.match(fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8"), /\/apply\/<\/loc>/);
+  assert.match(fs.readFileSync(path.join(OUT, "index.html"), "utf8"), /href="\/apply\/"/);
+});

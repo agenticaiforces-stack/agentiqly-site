@@ -141,7 +141,7 @@ ${blog}
 <p class="mono kicker">For founders</p>
 <h2 id="founders-title">Know a market from the inside?</h2>
 <p class="lede">We're choosing the next ventures. Tell us the problem, who has it and what they pay to deal with it today. If we can't build it well, we'll say so.</p>
-<a class="btn on-dark" href="mailto:${SITE.email}">Talk to Moshe</a>
+<a class="btn on-dark" href="/apply/">How to apply</a>
 </div></section>`;
 
   return {
@@ -173,6 +173,51 @@ function team() {
     description: "The people behind AgentiQly.io, a joint Israeli–US AI agentic startup incubator, with teams in Israel and the United States.",
     body: `<div class="page-h"><div class="wrap"><span class="mono">Team</span><h1>Two teams, one studio.</h1><p class="lede">AgentiQly.io is run by a team in Israel and a team in the United States.</p></div></div>
 <section style="border-top:0"><div class="wrap">${group("Israel", TEAM.israel)}${group("United States", TEAM.us)}</div></section>`,
+  };
+}
+
+// ---------- apply (owner, 15 Nov 2026) ----------
+function apply() {
+  return {
+    title: "Build your startup with us",
+    description: "Founders who know a market from the inside can apply to build an AI startup with AgentiQly.io, an Israeli–US AI agentic startup incubator.",
+    body: `<div class="page-h"><div class="wrap"><span class="mono">For founders</span><h1>Build your startup with us.</h1>
+<p class="lede">You know a market from the inside: the problem, who has it, and what they pay to live with it. We build AI products, prove them on a real business first, and publish what happened. If that sounds like the partner you need, tell us about it.</p></div></div>
+<section style="border-top:0"><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">Who it's for</span><h2>Founders with a real problem, not a pitch deck.</h2></div>
+<p>The best ventures we see start with someone who has done the work: an adjuster who lost claims to missed deadlines, a seller who watched fees eat the margin. Technical skills are welcome but not required. Knowing the customer is.</p></div>
+<ul class="rules">
+<li><b>A problem you have seen first-hand.</b><span>Who has it, how often, and what it costs them today.</span></li>
+<li><b>A way to reach the first customers.</b><span>A market you can name, and people in it who would take your call.</span></li>
+<li><b>Patience for proof.</b><span>We build, run it on a real business, and measure before anyone else pays.</span></li>
+</ul>
+</div></section>
+<section class="alt"><div class="wrap">
+<div class="sec-h"><span class="mono">How it works</span><h2>Four steps, and an honest answer at each one.</h2></div>
+<ol class="steps">
+<li><span class="mono">01</span><b>You write to us</b><span>A short email is enough. The list below says what helps.</span></li>
+<li><span class="mono">02</span><b>We answer honestly</b><span>If we can't build it well, we say so, and why.</span></li>
+<li><span class="mono">03</span><b>We agree the terms in writing</b><span>Who does what, who owns what, and what success looks like, before any work starts.</span></li>
+<li><span class="mono">04</span><b>We build and prove it</b><span>On a real business first, with the numbers published, the bad months included.</span></li>
+</ol>
+</div></section>
+<section><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">Apply</span><h2>What to send.</h2></div>
+<p>Email <a href="mailto:${SITE.email}?subject=Apply%3A%20building%20a%20startup">${esc(SITE.email)}</a> with the subject "Apply". Answer these in plain words; a few lines each is plenty.</p></div>
+<ol class="rules">
+<li><b>The problem.</b><span>What goes wrong, for whom, and how often.</span></li>
+<li><b>What it costs them today.</b><span>Money, time or customers lost, and what they pay to work around it.</span></li>
+<li><b>Why you.</b><span>What you have seen or done that others haven't.</span></li>
+<li><b>The first ten customers.</b><span>Who they are, and how you would reach them.</span></li>
+<li><b>Where you are.</b><span>Israel, the US, or both.</span></li>
+</ol>
+</div></section>
+<section class="cta-band"><div class="wrap">
+<h2>Know a market from the inside?</h2>
+<p class="lede">We read every application and reply to each one.</p>
+<a class="btn on-dark" href="mailto:${SITE.email}?subject=Apply%3A%20building%20a%20startup">Apply by email</a>
+<p class="small">Or write to ${esc(SITE.email)}</p>
+</div></section>`,
   };
 }
 
@@ -299,6 +344,7 @@ export function build() {
 
   addPage("/", home(posts));
   addPage("/team/", team());
+  addPage("/apply/", apply());
   addPage("/ventures/", venturesIndex());
   for (const v of VENTURES) addPage(`/ventures/${v.slug}/`, venture(v));
   addPage("/blog/", blogIndex(posts));
