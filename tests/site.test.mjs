@@ -137,7 +137,7 @@ test("founders never send the idea to apply, and businesses have their own page 
   assert.match(apply, /signed NDA/);
   assert.doesNotMatch(apply, /first ten customers/i);
   const b = fs.readFileSync(path.join(OUT, "build/index.html"), "utf8");
-  assert.match(b, /An AI app built for how your business works/);
+  assert.match(b, /built for your business alone/);
   assert.doesNotMatch(b, /\$\{/);
   assert.match(b, /"FAQPage"/);
   assert.match(fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8"), /\/build\/<\/loc>/);
