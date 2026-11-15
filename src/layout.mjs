@@ -91,6 +91,17 @@ section.alt{background:var(--bg2)}
 .vlist a.v:hover .nm{color:var(--aqua)}
 .status{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.08em;display:inline-block;padding:3px 8px;border:1px solid currentColor;margin-right:10px;vertical-align:3px}
 .status.good{color:var(--good)}.status.warn{color:var(--warn)}.status.muted{color:var(--hold)}
+.result{margin-bottom:48px}
+.bars{margin:28px 0;display:grid;gap:10px}
+.bars figcaption{color:var(--muted);margin-bottom:4px}
+.bar{display:grid;gap:4px}
+@media (min-width:700px){.bar{grid-template-columns:220px 1fr;align-items:center}}
+.bl{font-size:.9rem;color:var(--muted)}
+.bt{display:block;width:var(--w);min-width:5.5em;background:var(--ink);color:#fff;padding:6px 10px;box-sizing:border-box}
+.rtable{width:100%;border-collapse:collapse;margin:8px 0 24px;font-size:.95rem}
+.rtable caption{text-align:left;color:var(--muted);padding-bottom:8px}
+.rtable th,.rtable td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--line)}
+.rtable td{font-variant-numeric:tabular-nums}
 .facts{display:grid;gap:0;border-top:2px solid var(--ink);margin:0}
 @media (min-width:800px){.facts{grid-template-columns:repeat(3,1fr)}}
 .facts div{padding:20px 20px 20px 0;border-bottom:1px solid var(--line)}

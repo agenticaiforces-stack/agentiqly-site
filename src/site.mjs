@@ -15,7 +15,7 @@ export const SITE = {
 
 export const NAV = [
   { href: "/#ventures", label: "Ventures" },
-  { href: "/#proof", label: "Track record" },
+  { href: "/results/", label: "Results" },
   { href: "/#how", label: "How we build" },
   { href: "/team/", label: "Team" },
   { href: "/blog/", label: "Blog" },
@@ -180,3 +180,23 @@ export const TEAM = {
 
 // Filled when the owner sends the list of domains for the future pipeline.
 export const PIPELINE = [];
+
+// Client results (owner, 15 Nov 2026). Published without client names; source files are kept at the office.
+// Figures: the client's own Google Search Console, by week, and our dated measurement files.
+export const RESULTS = [
+  {
+    id: "us-printer",
+    who: "A US printer serving a specialist niche",
+    what: "Blog written and checked by our content engine",
+    started: "mid-October 2026",
+    intro: "Their blog was about six weeks old when our content engine took it on in mid-October. Three weeks later, Google was showing it more than three times as often.",
+    weeks: [
+      { label: "14 to 20 October 2026", shown: 4008, clicks: 5 },
+      { label: "21 to 27 October 2026", shown: 10912, clicks: 29 },
+      { label: "28 October to 3 November 2026", shown: 13397, clicks: 29 },
+    ],
+    caveat: "What that does and doesn't prove: a new blog grows on its own, and posts from an earlier provider were on it too, so not all of the rise is ours. Clicks are still low for the number of showings, so the search listings were rebuilt on 11 November to fix that.",
+    ai: "We also counted how often AI assistants name the business when a buyer asks a question in its niche: 4 of 20 at the start. The next reading is on 18 November, and the four- and eight-week readings follow in December.",
+    asOf: "15 November 2026",
+  },
+];

@@ -3,7 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { SITE, VENTURES, TEAM, PIPELINE, STATUS } from "./src/site.mjs";
+import { SITE, VENTURES, TEAM, PIPELINE, STATUS, RESULTS } from "./src/site.mjs";
 import { page, statusTag, ph, esc } from "./src/layout.mjs";
 import { markdown, parsePost, readingMinutes, inline } from "./src/md.mjs";
 
@@ -108,7 +108,8 @@ function home(posts) {
 <section id="proof"><div class="wrap cols">
 <div><div class="sec-h"><span class="mono">Track record</span><h2>We test on ourselves first, and publish the numbers.</h2></div>
 <p>Our own sites are the test bed. Before we changed anything, we took screenshots and speed readings of every one of them. That is Day 0.</p>
-<p>From then on we track search visits, appearances in AI answers and phone speed, and publish a report every month. The bad months stay in.</p></div>
+<p>From then on we track search visits, appearances in AI answers and phone speed, and publish a report every month. The bad months stay in.</p>
+<p><a href="/results/">See the first client results →</a></p></div>
 <dl class="facts" style="align-self:start">
 <div><dt>Proof program started</dt><dd>${ph(SITE.programStart)}</dd></div>
 <div><dt>Day 0 recorded</dt><dd>6 sites</dd></div>
@@ -293,6 +294,42 @@ function buildForYou() {
   };
 }
 
+// ---------- client results (owner, 15 Nov 2026) ----------
+function results() {
+  const n = (x) => x.toLocaleString("en-US");
+  const one = (r) => {
+    const max = Math.max(...r.weeks.map((w) => w.shown));
+    const bars = r.weeks.map((w) => `<div class="bar"><span class="bl">${esc(w.label)}</span><span class="bt" style="--w:${Math.round((w.shown / max) * 100)}%"><b>${n(w.shown)}</b></span></div>`).join("");
+    return `<article class="result" id="${r.id}"><div class="sec-h"><span class="mono">Client · as of ${esc(r.asOf)}</span><h2>${esc(r.who)}</h2></div>
+<p class="lede">${esc(r.intro)}</p>
+<figure class="bars" aria-hidden="true"><figcaption class="mono">Times shown in Google, per week</figcaption>${bars}</figure>
+<table class="rtable"><caption>${esc(r.who)}: Google search results by week</caption><thead><tr><th scope="col">Week</th><th scope="col">Times shown in Google</th><th scope="col">Clicks</th></tr></thead>
+<tbody>${r.weeks.map((w) => `<tr><th scope="row">${esc(w.label)}</th><td>${n(w.shown)}</td><td>${n(w.clicks)}</td></tr>`).join("")}</tbody></table>
+<p>${esc(r.caveat)}</p><p>${esc(r.ai)}</p></article>`;
+  };
+  return {
+    title: "Client results",
+    description: "Measured results from AgentiQly.io client work, by week, with what each figure does and doesn't prove. Clients are not named.",
+    body: `<div class="page-h"><div class="wrap"><span class="mono">Results</span><h1>What happened, by the week, with the weak spots left in.</h1>
+<p class="lede">Every figure on this page comes from the client's own Google records and our dated measurement files. It is early, and we would rather say so than dress it up.</p></div></div>
+<section style="border-top:0"><div class="wrap">${RESULTS.map(one).join("")}</div></section>
+<section class="alt"><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">Why there are no names</span><h2>We protect the businesses we work for.</h2></div></div>
+<div><p>Many of the businesses we work with sell in quiet, profitable niches, and the fastest way to lose one is to point competitors at it. So we don't. The records behind every figure are kept on file at our office.</p>
+<p>For serious prospects, we can show the underlying figures with every identifying detail removed, at our discretion. If you become a client, your name stays off this page too, unless you ask us to put it here.</p></div>
+</div></section>
+<section><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">Our own companies</span><h2>The same standard for our own ventures.</h2></div></div>
+<p>AdjusterOS Pro and the AgentiQly.io incubator started publishing in November 2026, and LifeIQ follows. Their numbers will appear here as they come in, good months and bad.</p>
+</div></section>
+<section class="cta-band"><div class="wrap">
+<h2>Want results like these for your business?</h2>
+<p class="lede">Tell us what your buyers ask before they order, and we'll tell you honestly whether we can help.</p>
+<a class="btn on-dark" href="/build/">See how we work with businesses</a>
+</div></section>`,
+  };
+}
+
 // ---------- ventures ----------
 function venture(v) {
   const s = STATUS[v.status];
@@ -418,6 +455,7 @@ export function build() {
   addPage("/team/", team());
   addPage("/apply/", apply());
   addPage("/build/", buildForYou());
+  addPage("/results/", results());
   addPage("/ventures/", venturesIndex());
   for (const v of VENTURES) addPage(`/ventures/${v.slug}/`, venture(v));
   addPage("/blog/", blogIndex(posts));

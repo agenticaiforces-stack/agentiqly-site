@@ -143,3 +143,11 @@ test("founders never send the idea to apply, and businesses have their own page 
   assert.match(fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8"), /\/build\/<\/loc>/);
   assert.match(fs.readFileSync(path.join(OUT, "index.html"), "utf8"), /href="\/build\/"/);
 });
+
+test("results page: no client names, figures in a real table, linked in the menu (owner, 15 Nov 2026)", () => {
+  const r = fs.readFileSync(path.join(OUT, "results/index.html"), "utf8");
+  assert.match(r, /A US printer serving a specialist niche/);
+  assert.match(r, /<td>13,397<\/td>/);
+  assert.match(r, /stays off this page too/);
+  assert.match(fs.readFileSync(path.join(OUT, "index.html"), "utf8"), /href="\/results\/"/);
+});
