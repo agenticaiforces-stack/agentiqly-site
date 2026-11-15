@@ -137,11 +137,17 @@ ${blog}
 <p style="margin-top:20px"><a href="/blog/">All posts →</a></p>
 </div></section>
 
+<section id="businesses" class="alt"><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">For businesses</span><h2>Need an AI app for your own business?</h2></div>
+<p>We build custom apps and agents for the job that eats your week. You get a written plan and price first, and it is tested on your real work before it goes live.</p></div>
+<p style="align-self:center"><a class="btn" href="/build/">How we build for businesses →</a></p>
+</div></section>
+
 <section id="founders" class="cta-band" aria-labelledby="founders-title"><div class="wrap">
 <p class="mono kicker">For founders</p>
 <h2 id="founders-title">Know a market from the inside?</h2>
-<p class="lede">We're choosing the next ventures. Tell us the problem, who has it and what they pay to deal with it today. If we can't build it well, we'll say so.</p>
-<a class="btn on-dark" href="mailto:${SITE.email}">Talk to Moshe</a>
+<p class="lede">We're choosing the next ventures. Tell us the problem and who has it. Your idea stays yours until we've talked and signed an NDA.</p>
+<a class="btn on-dark" href="/apply/">How to apply</a>
 </div></section>`;
 
   return {
@@ -173,6 +179,117 @@ function team() {
     description: "The people behind AgentiQly.io, a joint Israeli–US AI agentic startup incubator, with teams in Israel and the United States.",
     body: `<div class="page-h"><div class="wrap"><span class="mono">Team</span><h1>Two teams, one studio.</h1><p class="lede">AgentiQly.io is run by a team in Israel and a team in the United States.</p></div></div>
 <section style="border-top:0"><div class="wrap">${group("Israel", TEAM.israel)}${group("United States", TEAM.us)}</div></section>`,
+  };
+}
+
+// ---------- apply (owner, 15 Nov 2026) ----------
+// Founders never have to send the idea itself: the first email is the problem and the market only.
+function apply() {
+  const mail = `mailto:${SITE.email}?subject=Apply%3A%20building%20a%20startup`;
+  return {
+    title: "Build your startup with us",
+    description: "Apply to build an AI startup with AgentiQly.io. Your first email covers the problem only; the details wait for a call and a signed NDA.",
+    body: `<div class="page-h"><div class="wrap"><span class="mono">For founders</span><h1>You've watched a problem cost people money for years. Let's build the company that ends it.</h1>
+<p class="lede">The companies that last usually begin with someone who saw the same costly problem again and again, from the inside. If that's you, tell us about the problem you saw. We build AI products, prove them on a real business before anyone pays, and publish what happened, bad months included.</p></div></div>
+<section style="border-top:0"><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">Your idea stays yours</span><h2>Keep your idea to yourself. We only need the problem.</h2></div>
+<p>Your first email covers the problem and the market, nothing more. Don't send how you'd solve it, how it works, or anything you'd mind a stranger reading.</p>
+<p>If we both want to go further, we talk first. Before you share any details, we both sign an NDA (a mutual non-disclosure agreement).</p></div>
+<ul class="rules">
+<li><b>Read by the founding team only.</b><span>Applications are not shared outside AgentiQly.io.</span></li>
+<li><b>No details until there's a signed NDA.</b><span>The how comes after a call and a signed NDA, never in the first email.</span></li>
+<li><b>An honest answer.</b><span>If it isn't a fit, we say so and why.</span></li>
+</ul>
+</div></section>
+<section class="alt"><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">Who it's for</span><h2>Founders who have seen the problem first-hand.</h2></div>
+<p>You need to know the customer well. You don't need to write code.</p></div>
+<ul class="rules">
+<li><b>A problem you have seen first-hand.</b><span>Who has it, how often, and what it costs them today.</span></li>
+<li><b>A way to reach the first customers.</b><span>A market you can name, and people in it who would take your call.</span></li>
+<li><b>Patience for proof.</b><span>We build, run it on a real business, and measure before anyone else pays.</span></li>
+</ul>
+</div></section>
+<section><div class="wrap">
+<div class="sec-h"><span class="mono">How it works</span><h2>Four steps, and an honest answer at each one.</h2></div>
+<ol class="steps">
+<li><span class="mono">01</span><b>You describe the problem</b><span>A short email about the problem and the market. Not the solution.</span></li>
+<li><span class="mono">02</span><b>We talk</b><span>If it fits, a call. If it doesn't, we say so and why.</span></li>
+<li><span class="mono">03</span><b>We sign an NDA before the details</b><span>Then the terms in writing: who does what, who owns what, what success looks like.</span></li>
+<li><span class="mono">04</span><b>We build and prove it</b><span>On a real business first, with the numbers published, the bad months included.</span></li>
+</ol>
+</div></section>
+<section class="alt"><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">Apply</span><h2>What to send.</h2></div>
+<p>Email <a href="${mail}">${esc(SITE.email)}</a> with the subject "Apply". A few lines on each is plenty.</p></div>
+<ol class="rules">
+<li><b>The problem.</b><span>What goes wrong, for whom, and how often.</span></li>
+<li><b>What it costs them today.</b><span>Money, time or customers lost, and what they pay to work around it.</span></li>
+<li><b>Why you.</b><span>Your experience in this market, in a sentence or two.</span></li>
+<li><b>Where you are.</b><span>Israel, the US, or both.</span></li>
+</ol>
+</div></section>
+<section class="cta-band"><div class="wrap">
+<h2>Tell us about the problem you've seen.</h2>
+<p class="lede">Problem and market only. The founding team reads every application.</p>
+<a class="btn on-dark" href="${mail}">Apply by email</a>
+<p class="small">Want an app for your own business instead? <a href="/build/">See how we build for businesses</a>.</p>
+</div></section>`,
+  };
+}
+
+// ---------- build for your business (owner, 15 Nov 2026): client work, the studio's main business ----------
+function buildForYou() {
+  const mail = `mailto:${SITE.email}?subject=Build%3A%20an%20app%20for%20my%20business`;
+  const faq = [
+    ["Do I need to know anything technical?", "No. You tell us how the work gets done today and what goes wrong. We turn that into a written plan in plain language, and you approve it before we build."],
+    ["Who owns what you build?", "It is agreed in writing before work starts, so there are no surprises later."],
+    ["Can it work with the tools we already use?", "We check that on the first call. The written plan lists exactly what it will connect to, and says plainly if something can't be connected."],
+    ["Will it act on its own?", "Only if you want it to. By default nothing sends, publishes or spends money without a person saying yes."],
+    ["What if it can't be done well?", "We say so on the first call, and why. We would rather lose the job than build something that doesn't work."],
+    ["How do I know it worked?", "We agree what success means before we start, such as hours saved or orders answered, and measure it after launch."],
+  ];
+  return {
+    title: "Custom AI apps and agents for your business",
+    description: "Custom AI apps and agents for your own business, built by AgentiQly.io. A written plan and price first, then tested on your real work.",
+    body: `<div class="page-h"><div class="wrap"><span class="mono">For businesses</span><h1>The job your team does over and over, done by an app built for your business alone.</h1>
+<p class="lede">Count the hours your team spent last week answering questions it already answered the week before. You pay for those hours every week, and they buy nothing new. We build an app that does that one job your way, prove it on your real cases before it goes live, and you decide what it may do on its own.</p>
+<div class="ctas"><a class="btn on-dark" href="${mail}">Tell us the job you'd hand off</a></div></div></div>
+<section style="border-top:0"><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">What we build</span><h2>Start with the one job that costs you most.</h2></div>
+<p>Our own products started this way. AdjusterOS Pro was first built for a client. Our sales agent for online stores is in beta with a US printer serving a specialist niche.</p></div>
+<ul class="rules">
+<li><b>Answering customers.</b><span>Sizes, stock, order status, the same twenty questions, answered on your site, with anything it can't confirm sent to a person.</span></li>
+<li><b>Paperwork and documents.</b><span>Reading forms, emails and PDFs, pulling out what matters, and filing it where it belongs.</span></li>
+<li><b>Deadlines and follow-ups.</b><span>Renewals, claims, quotes and reminders tracked in one place, so nothing slips.</span></li>
+<li><b>Reports you'd never have time to read.</b><span>What changed, what it cost, and what to check next, with the source of every figure.</span></li>
+</ul>
+</div></section>
+<section class="alt"><div class="wrap">
+<div class="sec-h"><span class="mono">How it works</span><h2>You know what you're buying before any of it is built.</h2></div>
+<ol class="steps">
+<li><span class="mono">01</span><b>A first call</b><span>You walk us through how the work gets done today and where it goes wrong.</span></li>
+<li><span class="mono">02</span><b>A written plan and price</b><span>What it will do, what it connects to, what success looks like, and what it costs, before any work starts.</span></li>
+<li><span class="mono">03</span><b>Built and tested on your real work</b><span>You try it on real cases and tell us what's wrong while it's still being built.</span></li>
+<li><span class="mono">04</span><b>Live, and measured</b><span>It goes live when you say so, and we check it against what we agreed.</span></li>
+</ol>
+</div></section>
+<section><div class="wrap cols">
+<div><div class="sec-h"><span class="mono">Questions</span><h2>Before you get in touch.</h2></div></div>
+<dl class="rules">${faq.map(([q, a]) => `<div><dt><b>${esc(q)}</b></dt><dd>${esc(a)}</dd></div>`).join("")}</dl>
+</div></section>
+<section class="cta-band"><div class="wrap">
+<h2>Which job would you hand off first?</h2>
+<p class="lede">Email <a href="${mail}">${esc(SITE.email)}</a> with the subject "Build": what your business does, the job that takes too long, and the tools you use for it now.</p>
+<a class="btn on-dark" href="${mail}">Start with an email</a>
+</div></section>`,
+    jsonld: {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "Service", name: "Custom AI apps and agents for businesses", provider: { "@type": "Organization", name: "AgentiQly.io", url: SITE.url + "/" }, url: SITE.url + "/build/", areaServed: ["US", "IL"] },
+        { "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
+      ],
+    },
   };
 }
 
@@ -299,6 +416,8 @@ export function build() {
 
   addPage("/", home(posts));
   addPage("/team/", team());
+  addPage("/apply/", apply());
+  addPage("/build/", buildForYou());
   addPage("/ventures/", venturesIndex());
   for (const v of VENTURES) addPage(`/ventures/${v.slug}/`, venture(v));
   addPage("/blog/", blogIndex(posts));
