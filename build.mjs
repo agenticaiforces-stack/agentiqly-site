@@ -190,7 +190,7 @@ function apply() {
     title: "Build your startup with us",
     description: "Apply to build an AI startup with AgentiQly.io. Your first email covers the problem only; the details wait for a call and a signed NDA.",
     body: `<div class="page-h"><div class="wrap"><span class="mono">For founders</span><h1>You've watched a problem cost people money for years. Let's build the company that ends it.</h1>
-<p class="lede">The companies that last usually begin with someone who saw the same costly problem again and again, from the inside. If that's you, we want to hear about the problem, and only the problem. We build AI products, prove them on a real business before anyone pays, and publish what happened, bad months included.</p></div></div>
+<p class="lede">The companies that last usually begin with someone who saw the same costly problem again and again, from the inside. If that's you, tell us about the problem you saw. We build AI products, prove them on a real business before anyone pays, and publish what happened, bad months included.</p></div></div>
 <section style="border-top:0"><div class="wrap cols">
 <div><div class="sec-h"><span class="mono">Your idea stays yours</span><h2>Keep your idea to yourself. We only need the problem.</h2></div>
 <p>Your first email covers the problem and the market, nothing more. Don't send how you'd solve it, how it works, or anything you'd mind a stranger reading.</p>
